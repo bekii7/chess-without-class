@@ -9,7 +9,7 @@ body{
 
   background-color: rgb(246, 18, 18);
   width: 500px;
-  height: 500px;
+  height: fit-content;
 }
 .row-w{
   height: 75px;
@@ -23,6 +23,7 @@ body{
   width: 100%;
 
   background-color: rgb(5, 125, 13);
+  display: flex;
 }
 .col-w{
   width: 75px;
