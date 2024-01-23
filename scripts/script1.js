@@ -11,9 +11,7 @@ let row =[{
     col1: 'w',
     col2: 'g'
   },
-  clsJs :{
-
-  }
+  
 
 },
 {
@@ -25,9 +23,7 @@ let row =[{
     col1: 'g',
     col2: 'w'
   },
-  clsJs :{
-
-  }
+  
 
 },
 {
@@ -39,9 +35,7 @@ let row =[{
     col1: 'w',
     col2: 'g'
   },
-  clsJs :{
-
-  }
+  
 
 },
 {
@@ -53,9 +47,7 @@ let row =[{
     col1: 'g',
     col2: 'w'
   },
-  clsJs :{
-
-  }
+  
 
 },
 {
@@ -67,9 +59,7 @@ let row =[{
     col1: 'w',
     col2: 'g'
   },
-  clsJs :{
-
-  }
+  
 
 },
 {
@@ -81,9 +71,7 @@ let row =[{
     col1: 'g',
     col2: 'w'
   },
-  clsJs :{
-
-  }
+  
 
 },
 {
@@ -95,9 +83,7 @@ let row =[{
     col1: 'w',
     col2: 'g'
   },
-  clsJs :{
-
-  }
+  
 
 },
 {
@@ -109,9 +95,7 @@ let row =[{
     col1: 'g',
     col2: 'w'
   },
-  clsJs :{
-
-  }
+  
 
 }
 
@@ -125,10 +109,10 @@ row.forEach((rows)=>{
   <div class="row-${rows.clr}">
       <div class="col-${rows.col1} js-cell-${jsNum+=1}"></div>
       <div class="col-${rows.col2} js-cell-${jsNum+=1}"></div>
-      <div class="col-${rows.col1} js-cell-${jsNum+=1}">3</div>
+      <div class="col-${rows.col1} js-cell-${jsNum+=1}"></div>
       <div class="col-${rows.col2} js-cell-${jsNum+=1}"></div>
       <div class="col-${rows.col1} js-cell-${jsNum+=1}"></div>
-      <div class="col-${rows.col2} js-cell-${jsNum+=1}">6</div>
+      <div class="col-${rows.col2} js-cell-${jsNum+=1}"></div>
       <div class="col-${rows.col1} js-cell-${jsNum+=1}"></div>
       <div class="col-${rows.col2} js-cell-${jsNum+=1}"></div>
     </div>

@@ -30,13 +30,33 @@ body{
   height: 100%;
 
   background-color: white;
+
+  position: relative;
+
+  
 }
 .col-g{
   width: 75px;
   height: 100%;
 
   background-color: rgb(5, 125, 13);
+
+  position: relative;
 }
 .js-cell-{
   background-color: red;
+}
+.icons{
+  height: fit-content;
+  width: fit-content;
+  background-color: transparent;
+  
+  position: absolute;
+  top:30px;
+  left: 10px;
+
+  border: none;
+
+  cursor: pointer;
+  
 }
