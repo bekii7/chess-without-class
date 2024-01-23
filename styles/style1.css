@@ -37,3 +37,6 @@ body{
 
   background-color: rgb(5, 125, 13);
 }
+.js-cell-{
+  background-color: red;
+}

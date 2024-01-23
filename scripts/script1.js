@@ -1,5 +1,7 @@
 
 
+let jsNum = Number(0);
+
 let row =[{
   clr: 'w',
   col1:'w',
@@ -121,14 +123,14 @@ row.forEach((rows)=>{
   tableHtml+=
   `
   <div class="row-${rows.clr}">
-      <div class="col-${rows.col1}">1</div>
-      <div class="col-${rows.col2}">2</div>
-      <div class="col-${rows.col1}">3</div>
-      <div class="col-${rows.col2}">4</div>
-      <div class="col-${rows.col1}">5</div>
-      <div class="col-${rows.col2}">6</div>
-      <div class="col-${rows.col1}">7</div>
-      <div class="col-${rows.col2}">8</div>
+      <div class="col-${rows.col1} js-cell-${jsNum+=1}"></div>
+      <div class="col-${rows.col2} js-cell-${jsNum+=1}"></div>
+      <div class="col-${rows.col1} js-cell-${jsNum+=1}">3</div>
+      <div class="col-${rows.col2} js-cell-${jsNum+=1}"></div>
+      <div class="col-${rows.col1} js-cell-${jsNum+=1}"></div>
+      <div class="col-${rows.col2} js-cell-${jsNum+=1}">6</div>
+      <div class="col-${rows.col1} js-cell-${jsNum+=1}"></div>
+      <div class="col-${rows.col2} js-cell-${jsNum+=1}"></div>
     </div>
   `
 })
