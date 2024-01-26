@@ -60,3 +60,10 @@ body{
   cursor: pointer;
   
 }
+
+.sp-cell{
+  background-color: yellow;
+}
+.js-icon-pawn-w-{
+  background-color: blue;
+}
