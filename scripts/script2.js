@@ -58,9 +58,11 @@ function materialsb(cell,ic,cls){
     }
   })
 }
+
 //the move shower
-  document.querySelector('.pawn-b-1').addEventListener("click",()=>{
-    document.querySelector(`.js-cell-17`).innerHTML = `<button class="show-move js-show-move"><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
-    
-  })
+
+  
+
+
+
 
