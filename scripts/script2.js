@@ -58,14 +58,9 @@ function materialsb(cell,ic,cls){
     }
   })
 }
-/*
-click('rook-b-l','1')
+//the move shower
+  document.querySelector('.pawn-b-1').addEventListener("click",()=>{
+    document.querySelector(`.js-cell-17`).innerHTML = `<button class="show-move js-show-move"><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    
+  })
 
-function click(cls,cell){
-document.querySelector(`.${cls}`).addEventListener("click",()=>{
-  document.querySelector(`.js-cell-${cell}`).classList.add("sp-cell")
-})}
-
-document.querySelector(`.rook-b-l`).addEventListener("click",()=>{
-  document.querySelector(`.js-cell-1`).classList.add("sp-cell")
-})*/

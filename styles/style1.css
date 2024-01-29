@@ -67,3 +67,11 @@ body{
 .js-icon-pawn-w-{
   background-color: blue;
 }
+.show-move{
+  background-color: transparent;
+  border: none;
+
+  position: absolute;
+  top: 30px;
+  left: 10px;
+}

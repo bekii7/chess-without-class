@@ -2,6 +2,8 @@
 
 let jsNum = Number(0);
 
+
+//class is g and w
 let row =[{
   clr: 'w',
   col1:'w',
