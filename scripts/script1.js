@@ -122,57 +122,39 @@ row.forEach((rows)=>{
 })
 
 document.querySelector('.js-main-div').innerHTML= tableHtml;
-/*
-function displayTable(c1,c2){
-  let rows = {
-    clr: c1,
-    col1:c1,
-    col2: c2,
-  
-     clsCss : {
-      col1: c1,
-      col2: c2
-    },
-    clsJs :{
-  
-    }
-  
-  }
 
-
-}*/
 //og lineup
-materialsb('1','rook','rook-b-l')
-materialsb('2','knight','knight-b-l')
-materialsb('3','bishop','bishop-b-l')
-materialsb('4','queen','queen-b')
-materialsb('5','king','king-b')
-materialsb('6','bishop','bishop-b-r')
-materialsb('7','knight','knight-b-r')
-materialsb('8','rook','rook-b-r')
+materials('1','rook','rook-b-l','#000000')
+materials('2','knight','knight-b-l','#000000')
+materials('3','bishop','bishop-b-l','#000000')
+materials('4','queen','queen-b','#000000')
+materials('5','king','king-b','#000000')
+materials('6','bishop','bishop-b-r','#000000')
+materials('7','knight','knight-b-r','#000000')
+materials('8','rook','rook-b-r','#000000')
 
 for (i=9;i<=16;i++){
-  materialsb(`${i}`,'pawn',`pawn-b-${i-8}`)
+  materials(`${i}`,'pawn',`pawn-b-${i-8}`,'#000000')
 }
 
-materialsw('64','rook','rook-w-r')
-materialsw('63','knight','knight-w-r')
-materialsw('62','bishop','bishop-w-r')
-materialsw('61','king','king-w')
-materialsw('60','queen','queen-w')
-materialsw('59','bishop','bishop-w-l')
-materialsw('58','knight','knight-w-l')
-materialsw('57','rook','rook-w-l')
+materials('64','rook','rook-w-r','#909192')
+materials('63','knight','knight-w-r','#909192')
+materials('62','bishop','bishop-w-r','#909192')
+materials('61','king','king-w','#909192')
+materials('60','queen','queen-w','#909192')
+materials('59','bishop','bishop-w-l','#909192')
+materials('58','knight','knight-w-l','#909192')
+materials('57','rook','rook-w-l','#909192')
 
 
 for (i=49;i<=56;i++){
-  materialsw(`${i}`,'pawn',`pawn-w-${i-48}`)
+  materials(`${i}`,'pawn',`pawn-w-${i-48}`,'#909192')
 }
 
 
 
-function materialsw(cell,ic,cls){
-  document.querySelector(`.js-cell-${cell}`).innerHTML = `<button class="icons ${cls}"><i class="fa-solid fa-chess-${ic} fa-2xl" style="color: #909192;"></i></button>`;}
+function materials(cell,ic,cls,color){
+  document.querySelector(`.js-cell-${cell}`).innerHTML = `<button class="icons ${cls}"><i class="fa-solid fa-chess-${ic} fa-2xl" style="color: ${color};"></i></button>`;}
   
     
   
@@ -180,10 +162,6 @@ function materialsw(cell,ic,cls){
 
 
 
-function materialsb(cell,ic,cls){
-  document.querySelector(`.js-cell-${cell}`).innerHTML = `<button class="icons ${cls}"><i class="fa-solid fa-chess-${ic} fa-2xl" style="color: #000000;"></i></button>`;
-  
-}
 
 
 function specialCell(cell){
@@ -207,3 +185,22 @@ function specialCell(cell){
   "
   >remover</button>
   */
+ /*
+function displayTable(c1,c2){
+  let rows = {
+    clr: c1,
+    col1:c1,
+    col2: c2,
+  
+     clsCss : {
+      col1: c1,
+      col2: c2
+    },
+    clsJs :{
+  
+    }
+  
+  }
+
+
+}*/
