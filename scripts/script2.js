@@ -6,7 +6,7 @@ let move={
 }
 
 
-console.log(move.nextMove)
+
   
 //the move for the pawn
 movePawn('pawn-b-1',`17`,`9` )
@@ -31,46 +31,40 @@ movePawn('pawn-w-8','40','56')
 
 
 
-document.querySelector('.pawn-w-4').addEventListener("click",()=>
-{
-  console.log(44)
-})
+
 
 function movePawn(pawn,nextMove,previousMove){
   
   document.querySelector(`.${pawn}`).addEventListener("click",()=>{
-    
-    
-    specialCell(`${previousMove}`)
-    document.querySelector(`.js-cell-${nextMove}`,`.js-cell-${Number(nextMove)+8}`).innerHTML = `<button class="show-move js-show-move" 
-    ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
 
+
+    console.log(11)
+    specialCell(`${previousMove}`)
+  
+
+    //next possible moves
+    document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML = `<button class="show-move js-show-move" 
+    ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${Number(nextMove)+8}`).innerHTML = `<button class="show-move js-show-move" 
+    ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     
+
 
     document.querySelector(`.js-cell-${nextMove} .js-show-move`).addEventListener("click",()=>{
-      
-      showmove(`${nextMove}`,`${previousMove}`,`${pawn}`)
+       showmove(`${nextMove}`,`${previousMove}`,`${pawn}`)
+    })
+    document.querySelector(`.js-cell-${Number(nextMove)+8} .js-show-move`).addEventListener("click",()=>{
+      showmove(`${Number(nextMove)+8}`,`${previousMove}`,`${pawn}`)
     })
     });
-    document.querySelector(`.js-cell-${Number(nextMove)+8} .js-show-move`).addEventListener("click",()=>{
-        showmove(`${Number(nextMove)+8}`,`${previousMove}`,`${pawn}`)
-      })
+    
       
 }
 function showmove(cellA,cellR,pawn){
   if (cellA)
-  materialsb(`${cellA}`,'pawn',`${pawn}`)
+  materials(`${cellA}`,'pawn',`${pawn}`)
   document.querySelector(`.js-cell-${cellR} .${pawn}`).remove()
-/*
-  if (cellA==17){
-    move.previousMove +=8
-    move.nextMove +=8
-  }
-  if (cellA==25){
-    move.previousMove +=16
-    move.previousMove +=16
-  }
-  */
+
   
   
 
@@ -90,17 +84,37 @@ function showmove(cellA,cellR,pawn){
   }
 
 }
-
+function specialCell(cell){
+  document.querySelector(`.js-cell-${cell}`).classList.add("sp-cell")
+      for(l=1;l<=64;l++){
+        if(l === Number(`${cell}`)){
+          continue
+        }else{
+          document.querySelector(`.js-cell-${l}`).classList.remove("sp-cell");
+        
+        }
+        
+      }
+}
  
-
-
+/*
+  if (cellA==17){
+    move.previousMove +=8
+    move.nextMove +=8
+  }
+  if (cellA==25){
+    move.previousMove +=16
+    move.previousMove +=16
+  }
+  */
+/*
 let build = function (){
   ("click",()=>{
     document.querySelector(`.js-cell-${nextMove}`).innerHTML = `<button class="show-move js-show-move" 
 ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`
   })
-}
-
+}*/
+/*
 if (move.previousMove==17){
   console.log("yes")
   document.querySelector('.pawn-b-1').removeEventListener("click",()=>{
@@ -108,4 +122,8 @@ if (move.previousMove==17){
     
     document.querySelector(`.js-cell-${Number(nextMove)+8}`).innerHTML = `<button class="show-move js-show-move" 
     ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;})
-}
+}*/
+
+
+
+  
