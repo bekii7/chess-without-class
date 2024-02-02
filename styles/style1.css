@@ -44,7 +44,7 @@ body{
   position: relative;
 }
 .js-cell-{
-  background-color: black;
+  background-color: #000000;
 }
 .icons{
   height: fit-content;
@@ -64,7 +64,7 @@ body{
 .sp-cell{
   background-color: yellow;
 }
-.js-icon-pawn-w-{
+.pawn-w-{
   background-color: blue;
 }
 .js-show-move{
@@ -79,4 +79,8 @@ body{
 }
 .heir{
   background-color: white;
+}
+
+.js-cell-{
+  visibility: hidden;
 }

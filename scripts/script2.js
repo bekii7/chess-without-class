@@ -1,68 +1,111 @@
-materialsb('1','rook','rook-b-l')
-materialsb('2','knight','knight-b-l')
-materialsb('3','bishop','bishop-b-l')
-materialsb('4','queen','queen-b')
-materialsb('5','king','king-b')
-materialsb('6','bishop','bishop-b-r')
-materialsb('7','knight','knight-b-r')
-materialsb('8','rook','rook-b-r')
+let move={
+  previousMove: 9,
+  nextMove: 17,
+  leftMove:2,
 
-for (i=9;i<=16;i++){
-  materialsb(`${i}`,'pawn',`pawn-b-${i-8}`)
-}
-
-materialsw('64','rook','rook-w-r')
-materialsw('63','knight','knight-w-r')
-materialsw('62','bishop','bishop-w-r')
-materialsw('61','king','king-w')
-materialsw('60','queen','queen-w')
-materialsw('59','bishop','bishop-w-l')
-materialsw('58','knight','knight-w-l')
-materialsw('57','rook','rook-w-l')
-
-
-for (i=49;i<=56;i++){
-  materialsw(`${i}`,'pawn',`pawn-w-${i-48}`)
 }
 
 
+console.log(move.nextMove)
+  
+//the move for the pawn
+movePawn('pawn-b-1',`17`,`9` )
+movePawn('pawn-b-2','18','10' )
+movePawn('pawn-b-3','19','11' )
+movePawn('pawn-b-4','20','12' )
+movePawn('pawn-b-5','21','13' )
+movePawn('pawn-b-6','22','14' )
+movePawn('pawn-b-7','23','15' )
+movePawn('pawn-b-8','24','16' )
 
-function materialsw(cell,ic,cls){
-  document.querySelector(`.js-cell-${cell}`).innerHTML = `<button class="icons ${cls}"><i class="fa-solid fa-chess-${ic} fa-2xl" style="color: #909192;"></i></button>`;
-  document.querySelector(`.${cls}`).addEventListener("click",()=>{
-    document.querySelector(`.js-cell-${cell}`).classList.add("sp-cell")
-    for(l=1;l<=64;l++){
-      if(l === Number(`${cell}`)){
-        continue
-      }else{
-        document.querySelector(`.js-cell-${l}`).classList.remove("sp-cell")
-      }
+
+movePawn('pawn-w-1','33','49', )
+movePawn('pawn-w-2','34','50', )
+movePawn('pawn-w-3','35','51', )
+movePawn('pawn-w-4','36','52',)
+movePawn('pawn-w-5','37','53' )
+movePawn('pawn-w-6','38','54' )
+movePawn('pawn-w-7','39','55')
+movePawn('pawn-w-8','40','56')
+
+
+
+
+document.querySelector('.pawn-w-4').addEventListener("click",()=>
+{
+  console.log(44)
+})
+
+function movePawn(pawn,nextMove,previousMove){
+  
+  document.querySelector(`.${pawn}`).addEventListener("click",()=>{
+    
+    
+    specialCell(`${previousMove}`)
+    document.querySelector(`.js-cell-${nextMove}`,`.js-cell-${Number(nextMove)+8}`).innerHTML = `<button class="show-move js-show-move" 
+    ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+
+    
+
+    document.querySelector(`.js-cell-${nextMove} .js-show-move`).addEventListener("click",()=>{
       
-    }
-  })
- 
-}
-
-
-function materialsb(cell,ic,cls){
-  document.querySelector(`.js-cell-${cell}`).innerHTML = `<button class="icons ${cls}"><i class="fa-solid fa-chess-${ic} fa-2xl" style="color: #000000;"></i></button>`;
-  document.querySelector(`.${cls}`).addEventListener("click",()=>{
-    document.querySelector(`.js-cell-${cell}`).classList.add("sp-cell")
-    for(i=1;i<=64;i++){
-      if(i === Number(`${cell}`)){
-        continue
-      }else{
-        document.querySelector(`.js-cell-${i}`).classList.remove("sp-cell")
-      }
+      showmove(`${nextMove}`,`${previousMove}`,`${pawn}`)
+    })
+    });
+    document.querySelector(`.js-cell-${Number(nextMove)+8} .js-show-move`).addEventListener("click",()=>{
+        showmove(`${Number(nextMove)+8}`,`${previousMove}`,`${pawn}`)
+      })
       
-    }
-  })
 }
-
-//the move shower
-
+function showmove(cellA,cellR,pawn){
+  if (cellA)
+  materialsb(`${cellA}`,'pawn',`${pawn}`)
+  document.querySelector(`.js-cell-${cellR} .${pawn}`).remove()
+/*
+  if (cellA==17){
+    move.previousMove +=8
+    move.nextMove +=8
+  }
+  if (cellA==25){
+    move.previousMove +=16
+    move.previousMove +=16
+  }
+  */
+  
   
 
+  if(cellA >= 17 && cellA <= 24){
+    document.querySelector(`.js-cell-${Number(cellA)+8}`).innerHTML = ''
 
 
+  }else if(cellA >= 25 && cellA <= 32){
+    document.querySelector(`.js-cell-${Number(cellA)-8}`).innerHTML = ''
+  }
+  if(cellA >= 33 && cellA <= 40){
+    document.querySelector(`.js-cell-${Number(cellA)-8}`).innerHTML = ''
 
+
+  }else if(cellA >= 41 && cellA <= 48){
+    document.querySelector(`.js-cell-${Number(cellA)+8}`).innerHTML = ''
+  }
+
+}
+
+ 
+
+
+let build = function (){
+  ("click",()=>{
+    document.querySelector(`.js-cell-${nextMove}`).innerHTML = `<button class="show-move js-show-move" 
+><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`
+  })
+}
+
+if (move.previousMove==17){
+  console.log("yes")
+  document.querySelector('.pawn-b-1').removeEventListener("click",()=>{
+      
+    
+    document.querySelector(`.js-cell-${Number(nextMove)+8}`).innerHTML = `<button class="show-move js-show-move" 
+    ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;})
+}
