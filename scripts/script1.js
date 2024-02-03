@@ -137,6 +137,8 @@ for (i=9;i<=16;i++){
   materials(`${i}`,'pawn',`pawn-b-${i-8}`,'#000000')
 }
 
+
+
 materials('64','rook','rook-w-r','#909192')
 materials('63','knight','knight-w-r','#909192')
 materials('62','bishop','bishop-w-r','#909192')
