@@ -47,7 +47,7 @@ function movePawn(pawn,nextMove,previousMove,color,left){
     }
     
   
-    console.log(move)
+    
     mover(pawn,nextMove,previousMove,color,left)
     });
   } 
@@ -65,8 +65,7 @@ function mover(pawn,nextMove,previousMove,color,left){
   move.color= color
   move.leftMove = Number(`${left}`)
   
-
-
+//the other possible move removed
   if(document.querySelector('.show-move')){
     document.querySelector(`.js-show-move`).remove()}
   if(document.querySelector('.show-move')){
@@ -88,6 +87,7 @@ function mover(pawn,nextMove,previousMove,color,left){
   document.querySelector(`.js-cell-${nextMove} .js-show-move`).addEventListener("click",()=>{
      showmove(`${nextMove}`,`${previousMove}`,`${pawn}`,`${color}`)
   })
+  //next move for left move is one
   if(color === '#000000'){
   if(Number(move.leftMove) === Number(2)){
     document.querySelector(`.js-cell-${Number(nextMove)+8} .js-show-move`).addEventListener("click",()=>{
@@ -112,7 +112,7 @@ function showmove(cellA,cellR,pawn,color){
     document.querySelector(`.js-show-move`).remove()
     
   }
-  console.log(cellR)
+  //move updated
   if (color === '#000000' ){
   if(Number(cellA) === Number(move.nextMove)){
     move.nextMove +=8
@@ -128,7 +128,7 @@ function showmove(cellA,cellR,pawn,color){
       move.leftMove-=1
     }
     }}
-    console.log(cellA)
+    
     if (color === '#909192' ){
       if(Number(cellA) === Number(move.nextMove)){
         move.nextMove -=8
@@ -155,6 +155,7 @@ function showmove(cellA,cellR,pawn,color){
     
     });
 }
+//special cell
 function specialCell(cell){
   
   document.querySelector(`.js-cell-${cell}`).classList.add("sp-cell")
