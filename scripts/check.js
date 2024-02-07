@@ -29,7 +29,7 @@ let  nextMoveK={
   m8: moveK.previousMove+17,
 
 }
-let previousMoveBL = 64
+let previousMoveBL = 2
 let previousMoveBR = 7
 let previousMoveWL = 58
 let previousMoveWR = 63

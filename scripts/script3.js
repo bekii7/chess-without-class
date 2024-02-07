@@ -23,14 +23,10 @@ function moveKnight(knight,previousMove,color){
 }
 
 function moverKnight(knight,previousMove,color){
-  reset()
-  reset()
-  reset()
-  reset()
-  reset()
-  reset()
-  reset()
-  reset()
+  for(i=1;i<=20;i++){
+    reset()
+  }
+  
   console.log(moveK.previousMove)
   console.log(nextMoveK)
   if(true){

@@ -66,10 +66,9 @@ function mover(pawn,nextMove,previousMove,color,left){
   move.leftMove = Number(`${left}`)
   
 //the other possible move removed
-  if(document.querySelector('.show-move')){
-    document.querySelector(`.js-show-move`).remove()}
-  if(document.querySelector('.show-move')){
-    document.querySelector(`.js-show-move`).remove()}
+for(i=1;i<=20;i++){
+  reset()
+}
 
     specialCell(`${previousMove}`)
   //next possible moves
