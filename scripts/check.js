@@ -29,9 +29,10 @@ let  nextMoveK={
   m8: moveK.previousMove+17,
 
 }
-function movemove(){
-  
-}
+let previousMoveBL = 64
+let previousMoveBR = 7
+let previousMoveWL = 58
+let previousMoveWR = 63
 //move for the knight
 /*
 let movess ={
