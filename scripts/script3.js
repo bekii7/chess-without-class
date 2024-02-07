@@ -27,8 +27,7 @@ function moverKnight(knight,previousMove,color){
     reset()
   }
   
-  console.log(moveK.previousMove)
-  console.log(nextMoveK)
+  
   if(true){
     moveK.knight = knight
     moveK.previousMove= previousMove
@@ -103,13 +102,13 @@ function showmoveK(move,knight,previousMove,color,numSpecial){
   nextMoveK.m6 = Number(`${move}`)+10
   nextMoveK.m7 = Number(`${move}`)+15
   nextMoveK.m8 = Number(`${move}`)+17
-  console.log(numSpecial)
+
 
 
 
 
   document.querySelector(`.${knight}`).addEventListener("click",()=>{
-
+    
     moveKnight(moveK.knight,moveK.previousMove,moveK.color)
     
     })

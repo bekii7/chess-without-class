@@ -1,7 +1,4 @@
 
-
-
-
   
 //the move for the pawn
 movePawn('pawn-b-1','17','9','#000000',`2`)

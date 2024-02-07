@@ -9,6 +9,9 @@ let move={
 
 }
 
+
+
+//for the knight
 let moveK ={
   knight: 'knight-b-l',
   previousMove: 2,
@@ -33,6 +36,32 @@ let previousMoveBL = 2
 let previousMoveBR = 7
 let previousMoveWL = 58
 let previousMoveWR = 63
+
+
+
+//for the bishop
+let moveB={
+  bishop: `bishop-b-l`,
+  previousMove: 3,
+
+  color: `#000000`
+}
+let nextMoveB={
+  m1 : moveB.previousMove+7
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 //move for the knight
 /*
 let movess ={
