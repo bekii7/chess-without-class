@@ -72,6 +72,7 @@ for(i=1;i<=20;i++){
 
     specialCell(`${previousMove}`)
   //next possible moves
+  if(document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML ===''){
   if(color === '#000000'){
   document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
   if(Number(move.leftMove) === Number(2)){
@@ -80,7 +81,7 @@ for(i=1;i<=20;i++){
     document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     if(Number(move.leftMove) === Number(2)){
       document.querySelector(`.js-cell-${Number(nextMove)-8}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}}
-  
+    }
 
 
   document.querySelector(`.js-cell-${nextMove} .js-show-move`).addEventListener("click",()=>{
