@@ -159,6 +159,72 @@ function materials(cell,ic,cls,color){
   document.querySelector(`.js-cell-${cell}`).innerHTML = `<button class="icons ${cls}"><i class="fa-solid fa-chess-${ic} fa-2xl" style="color: ${color};"></i></button>`;}
   
     
+  let move={
+
+
+    pawn:' ',
+    previousMove: 9,
+    nextMove: 17,
+    color:'',
+    leftMove:2
+  
+  }
+  
+  
+  
+  //for the knight
+  let moveK ={
+    knight: 'knight-b-l',
+    previousMove: 2,
+  
+   
+    
+    color: '#000000'
+  
+  }
+  let  nextMoveK={
+    m1: moveK.previousMove-17,
+    m2: moveK.previousMove-15,
+    m3: moveK.previousMove-10,
+    m4: moveK.previousMove-6,
+    m5: moveK.previousMove+6,
+    m6: moveK.previousMove+10,
+    m7: moveK.previousMove+15,
+    m8: moveK.previousMove+17,
+  
+  }
+  let previousMoveBL = 2
+  let previousMoveBR = 7
+  let previousMoveWL = 58
+  let previousMoveWR = 63
+  
+  
+  
+  //for the bishop
+  let moveB={
+    bishop: `bishop-b-l`,
+    previousMove: 3,
+  
+    color: `#000000`
+  }
+  let nextMoveB={
+    m1 : moveB.previousMove+7
+  
+  }
+  
+  let moveR={
+    rook: `rook-b-l`,
+    previousMove: 3,
+    color: `#000000`
+  }
+  
+  
+  
+  
+  
+  
+  
+  
   
  
 

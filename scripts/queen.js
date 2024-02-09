@@ -1,7 +1,7 @@
 moveQueen(`queen-b`,`4`,`#000000`)
 moveQueen(`queen-w`,`60`,`#909192`)
 
-
+//queen
 function moveQueen(queen,previousMove,color){
   document.querySelector(`.${queen}`).addEventListener("click",()=>{
     moverQueen(queen,previousMove,color)
