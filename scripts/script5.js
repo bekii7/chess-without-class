@@ -100,7 +100,7 @@ moveR.color= `${color}`
 
 document.querySelector(`.js-cell-${nombre} .${rook}`).addEventListener("click",()=>{
   console.log(88)
-  moveRook(`${rook}`,`${nombre}`,`${color}`)
+  moverRook(`${rook}`,`${nombre}`,`${color}`)
   
   })
   for(i=1;i<=20;i++){

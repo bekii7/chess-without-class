@@ -1,42 +1,102 @@
-moveBishop(`bishop-b-l`,`3`,`#000000`)
-moveBishop(`bishop-b-r`,`6`,`#000000`)
-moveBishop(`bishop-w-r`,`62`,`#909192`)
-moveBishop(`bishop-w-l`,`59`,`#909192`)
+moveQueen(`queen-b`,`4`,`#000000`)
+moveQueen(`queen-w`,`60`,`#909192`)
 
 
-
-
-function moveBishop(bishop,previousMove,color){
-  moveB.bishop=`${bishop}`
-  moveB.previousMove = `${previousMove}`
-  moveB.color=`${color}`
-  
-
-  document.querySelector(`.${bishop}`).addEventListener("click",()=>
-  {
-  moverBishop(bishop,previousMove,color)
+function moveQueen(queen,previousMove,color){
+  document.querySelector(`.${queen}`).addEventListener("click",()=>{
+    moverQueen(queen,previousMove,color)
   })
-  
 }
-function moverBishop(bishop,previousMove,color){
 
-  
+function moverQueen(queen,previousMove,color){
+  specialCell(`${previousMove}`)
   for(i=1;i<=20;i++){
     reset()
   }
+  leftMove=0
+  show=0
+  for(let i =Number(`${previousMove}`);i<=64;i+=8){
+    if(i===Number(`${previousMove}`)){
+      continue
+    }
+    if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+      
+      break
+    }
+    document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+      showMoveQ(queen,previousMove,i,color)})
+    show++
 
-  moveB.bishop=`${bishop}`
-  moveB.previousMove = `${previousMove}`
-  moveB.color=`${color}`
-  
-
-  specialCell(`${previousMove}`)
-  
-   showCountI = 0
-  
-  Numberspecial=0
-  for(let i=Number(`${previousMove}`);i<=64;i+=7){
+   
+  }
+   show=0
+  leftMove=0
+  for(let i =Number(`${previousMove}`);i<=64;i+=1){
+    if(i===Number(`${previousMove}`)){
+      continue
+    }
+    if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+      
+      break
+    }
+    if((leftMove===Number(8-`${previousMove}`) && Number(`${previousMove}`)<=8)||
+    (leftMove===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)<=16)) ||
+    (leftMove===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)<=24))||(leftMove===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)<=32))||(leftMove===Number(40-`${previousMove}`) && (32>Number(`${previousMove}`)<=40))||(leftMove===Number(48-`${previousMove}`) && (40>Number(`${previousMove}`)<=48))||(leftMove===Number(56-`${previousMove}`) && (48>Number(`${previousMove}`)<=56))||
+    (leftMove===Number(64-`${previousMove}`) && (56>Number(`${previousMove}`)<=64))){
+      break
+    }
     
+    document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+      showMoveQ(queen,previousMove,i,color)})
+    show++
+    leftMove++
+  }
+  show=0
+  leftMove=0
+  for(let i =Number(`${previousMove}`);i<=64;i-=1){
+    if(i===Number(`${previousMove}`)){
+      continue
+    }
+    if((leftMove===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
+    (leftMove===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
+    (leftMove===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(leftMove===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(leftMove===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(leftMove===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(leftMove===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
+    (leftMove===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
+      break
+    }
+    if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+      
+      break
+    }
+    document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+      showMoveQ(queen,previousMove,i,color)})
+    show++
+    leftMove++
+  }
+  show=0
+  leftMove=0
+  if(Number(`${previousMove}`)>=9){
+  for(let i =Number(`${previousMove}`);i<=64;i-=8){
+    if(i===Number(`${previousMove}`)){
+      continue
+    }
+    if(Number(`${i}`)>=9){
+    if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+      
+      break
+      }
+    document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+      showMoveQ(queen,previousMove,i,color)})
+    show++
+    leftMove++
+  }}}
+  showCountI = 0
+  Numberspecial =0
+  for(let i=Number(`${previousMove}`);i<=64;i+=7){
+    console.log(88)
     if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
     (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
     (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
@@ -55,7 +115,7 @@ function moverBishop(bishop,previousMove,color){
     
      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
-      showmoveB(bishop,previousMove,`${i}`,color)})
+      showMoveQ(queen,previousMove,`${i}`,color)})
     Numberspecial++
     showCountI++
     
@@ -71,18 +131,18 @@ function moverBishop(bishop,previousMove,color){
     if(i===Number(`${previousMove}`)){
       continue
     }
-    if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !==''){
+    if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
       
       break
-      
     }
     
   document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
   document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
-    showmoveB(bishop,previousMove,`${i}`,color)})
+    showMoveQ(queen,previousMove,`${i}`,color)})
   Numberspecial++
   showCountI++} 
   showCountI = 0
+  if(Number(`${previousMove}`)>=10){
  for(let j=Number(`${previousMove}`);j<=64;j-=9){
       
       if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
@@ -104,11 +164,12 @@ function moverBishop(bishop,previousMove,color){
     
     document.querySelector(`.js-cell-${j}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${j} .js-show-move`).addEventListener("click",()=>{
-      showmoveB(bishop,previousMove,`${j}`,color)})
+      showMoveQ(queen,previousMove,`${j}`,color)})
     Numberspecial++
-    showCountI++}
+    showCountI++}}
 
     showCountI = 0
+  if(Number(`${previousMove}`)>=8){
   for(let i=Number(`${previousMove}`);0<i<=64;i-=7){
     if(
     (showCountI===Number(8-`${previousMove}`) && (1<Number(`${previousMove}`)<=8)) ||
@@ -132,52 +193,21 @@ function moverBishop(bishop,previousMove,color){
     console.log(i)
      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
-      showmoveB(bishop,previousMove,`${i}`,color)})
+      showMoveQ(queen,previousMove,`${i}`,color)})
     Numberspecial++
     showCountI++
   }
-    
-    
-    
-  
-  
-  
-}
+}}
 
-   
-function showmoveB(bishop,previousMove,nextMove,color){
-  materials(`${nextMove}`,`bishop`,`${bishop}`,`${color}`)
-    
-    moveB.bishop= `${bishop}`
-    moveB.previousMove = `${nextMove}`
-    moveB.color=`${color}`
-  
+function showMoveQ(queen,previousMove,nextMove,color){
+  materials(`${nextMove}`,`queen`,`${queen}`,`${color}`)
+  document.querySelector(`.js-cell-${previousMove} .${queen}`).remove()
 
-  document.querySelector(`.js-cell-${nextMove} .${bishop}`).addEventListener("click",()=>{
-    
-    moverBishop(`${bishop}`,`${nextMove}`,`${color}`)
-    
-    })
-  
-  
-  
-    //moveBishop(moveB.bishop,moveB.previousMove,moveB.color)
-    
-    document.querySelector(`.js-cell-${previousMove} .${bishop}`).remove()
-    for(i=1;i<=Numberspecial;i++){
-      document.querySelector(`.js-show-move`).remove()
-    
-  }
-}
-function showMoveCreate(nombre){
-  for(let i=Number(`${previousMove}`);i<=64;i+=Number(nombre)){
-    if(i===Number(`${previousMove}`)){
-      continue
+  document.querySelector(`.js-cell-${nextMove} .${queen}`).addEventListener("click",()=>{
+    console.log(88)
+    moverQueen(`${queen}`,`${nextMove}`,`${color}`)})
+
+    for(i=1;i<=20;i++){
+      reset()
     }
-     document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
-    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
-      showmoveB(bishop,previousMove,`${i}`,color)})
-    Numberspecial++
-    
   }
-}

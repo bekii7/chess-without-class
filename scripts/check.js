@@ -58,9 +58,198 @@ let moveR={
 }
 
 
-
-
-
+function queenLoop(previousMove){
+  
+  
+    show=0
+    for(let i =Number(`${previousMove}`);i<=64;i+=8){
+      if(i===Number(`${previousMove}`)){
+        continue
+      }
+      if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+        
+        break
+      }
+      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+        showMoveR(rook,previousMove,i,color)})
+      show++
+      return `${i}`
+    }
+     show=0
+    leftMove=0
+    for(let j =Number(`${previousMove}`);j<=64;j+=1){
+      if(j===Number(`${previousMove}`)){
+        continue
+      }
+      if((leftMove===Number(8-`${previousMove}`) && Number(`${previousMove}`)<=8)||
+      (leftMove===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)<=16)) ||
+      (leftMove===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)<=24))||(leftMove===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)<=32))||(leftMove===Number(40-`${previousMove}`) && (32>Number(`${previousMove}`)<=40))||(leftMove===Number(48-`${previousMove}`) && (40>Number(`${previousMove}`)<=48))||(leftMove===Number(56-`${previousMove}`) && (48>Number(`${previousMove}`)<=56))||
+      (leftMove===Number(64-`${previousMove}`) && (56>Number(`${previousMove}`)<=64))){
+        break
+      }
+      if(document.querySelector(`.js-cell-${Number(j)}`).innerHTML !== ``){
+        
+        break
+      }
+      document.querySelector(`.js-cell-${j}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${j} .js-show-move`).addEventListener("click",()=>{
+        showMoveR(rook,previousMove,j,color)})
+      show++
+      leftMove++
+      return `${j}`
+    }
+    show=0
+    leftMove=0
+    for(let i =Number(`${previousMove}`);i<=64;i-=1){
+      if(i===Number(`${previousMove}`)){
+        continue
+      }
+      if((leftMove===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
+      (leftMove===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
+      (leftMove===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(leftMove===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(leftMove===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(leftMove===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(leftMove===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
+      (leftMove===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
+        break
+      }
+      if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+        
+        break
+      }
+      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+        showMoveR(rook,previousMove,i,color)})
+      show++
+      leftMove++
+      return `${i}`
+    }
+    show=0
+    leftMove=0
+    for(let i =Number(`${previousMove}`);i<=64;i-=8){
+      if(i===Number(`${previousMove}`)){
+        continue
+      }
+      if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+        
+        break
+      }
+      
+      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+        showMoveR(rook,previousMove,i,color)})
+      show++
+      leftMove++
+      return `${i}`
+    }
+    showCountI = 0
+    
+    Numberspecial=0
+    for(let i=Number(`${previousMove}`);i<=64;i+=7){
+      
+      if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
+      (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
+      (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
+      (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
+        break
+      }
+      if(i===Number(`${previousMove}`)){
+        continue
+      }
+      if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
+        
+        break
+      }
+      
+      
+      
+       document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+        showmoveB(bishop,previousMove,`${i}`,color)})
+      Numberspecial++
+      showCountI++
+      return `${i}`
+    }
+     showCountI = 0
+    for(let i=Number(`${previousMove}`);i<=64;i+=9){
+      if((showCountI===Number(8-`${previousMove}`) && Number(`${previousMove}`)<=8)||
+      (showCountI===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)<=16)) ||
+      (showCountI===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(40-`${previousMove}`) && (32>Number(`${previousMove}`)<=40))||(showCountI===Number(48-`${previousMove}`) && (40>Number(`${previousMove}`)<=48))||(showCountI===Number(56-`${previousMove}`) && (48>Number(`${previousMove}`)<=56))||
+      (showCountI===Number(64-`${previousMove}`) && (56>Number(`${previousMove}`)<=64))){
+        break
+      }
+      if(i===Number(`${previousMove}`)){
+        continue
+      }
+      if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !==''){
+        
+        break
+        
+      }
+      
+    document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+      showmoveB(bishop,previousMove,`${i}`,color)})
+    Numberspecial++
+    showCountI++
+    return `${i}`} 
+    showCountI = 0
+   for(let i=Number(`${previousMove}`);i<=64;i-=9){
+        
+        if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
+        (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
+        (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
+        (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
+          break
+        }
+        
+      if(i===Number(`${previousMove}`)){
+          continue
+        }
+        if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !==''){
+        
+          break
+          
+        }
+        
+      
+      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+        showmoveB(bishop,previousMove,`${i}`,color)})
+      Numberspecial++
+      showCountI++
+      return `${i}`
+    }
+  
+      showCountI = 0
+    for(let i=Number(`${previousMove}`);0<i<=64;i-=7){
+      if(
+      (showCountI===Number(8-`${previousMove}`) && (1<Number(`${previousMove}`)<=8)) ||
+      (showCountI===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)<=16))||
+      (showCountI===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)<=24))||
+      (showCountI===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)<=32))||
+      (showCountI===Number(40-`${previousMove}`) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(48-`${previousMove}`) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(56-`${previousMove}`) && (48<Number(`${previousMove}`)<=56))||
+      (showCountI===Number(64-`${previousMove}`) && (56<Number(`${previousMove}`)<=64))){
+        break
+      }
+      if(i===Number(`${previousMove}`)){
+        continue
+      }
+      
+      if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !=''){
+        break
+      }
+      if (i<=0){
+        break
+      }
+      console.log(i)
+       document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+        showmoveB(bishop,previousMove,`${i}`,color)})
+      Numberspecial++
+      showCountI++
+      return `${i}`
+    }
+  
+}
 
 
 
