@@ -51,7 +51,26 @@ let nextMoveB={
 
 }
 
-
+function moveMinus9(){
+  showCountI = 0
+    for(let i=Number(`${previousMove}`);i<=64;i-=9){
+      if((showCountI===Number(`${previousMove}`-0) && Number(`${previousMove}`)<=8)||
+    (showCountI===Number(`${previousMove}`-9) && (10<Number(`${previousMove}`)<=16)) ||
+    (showCountI===Number(`${previousMove}`-8) && (16>Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-17) && (24>Number(`${previousMove}`)<=32)||(showCountI===Number(`${previousMove}`-25) && (24>Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-25) && (24>Number(`${previousMove}`)<=32)))||(showCountI===Number(`${previousMove}`-33) && (32>Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40>Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48>Number(`${previousMove}`)<=56))||
+    (showCountI===Number(`${previousMove}`-57) && (56>Number(`${previousMove}`)<=64))){
+      break
+    }
+    
+      if(i===Number(`${previousMove}`)){
+        continue
+      }
+    
+    document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+      showmoveB(bishop,previousMove,`${i}`,color)})
+    Numberspecial++
+    showCountI++}
+}
 
 
 
