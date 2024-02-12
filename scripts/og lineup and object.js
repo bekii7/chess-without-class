@@ -225,7 +225,19 @@ function materials(cell,ic,cls,color){
   
   
   
+  function specialCell(cell){
   
+    document.querySelector(`.js-cell-${cell}`).classList.add("sp-cell")
+        for(let l=1;l<=64;l++){
+          if(l === Number(`${cell}`)){
+            continue
+          }else{
+            document.querySelector(`.js-cell-${l}`).classList.remove("sp-cell");
+          
+          }
+          
+        }
+  }  
  
 
 

@@ -64,6 +64,11 @@ body{
 .sp-cell{
   background-color: yellow;
 }
+
+.taken-cell{
+
+  background-color: red;
+}
 .pawn-w{
   background-color: blue;
 }

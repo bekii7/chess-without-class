@@ -237,12 +237,14 @@ for(i=1;i<=20;i++){
   //next possible moves
   
   if(color === '#000000'){
+    takerPawn(pawn,previousMove,color)
     if(document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML ===''){
   document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}
   if(Number(move.leftMove) === Number(2)){
     if(document.querySelector(`.js-cell-${Number(nextMove)+8}`).innerHTML ===''){
     document.querySelector(`.js-cell-${Number(nextMove)+8}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}}}
   if(color === '#909192'){
+    takerPawn(pawn,previousMove,color)
     if(document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML ===''){
     document.querySelector(`.js-cell-${Number(nextMove)}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}
     if(Number(move.leftMove) === Number(2)){
@@ -254,6 +256,7 @@ for(i=1;i<=20;i++){
   document.querySelector(`.js-cell-${nextMove} .js-show-move`).addEventListener("click",()=>{
      showmove(`${nextMove}`,`${previousMove}`,`${pawn}`,`${color}`)
   })
+  
   //next move for left move is one
   if(color === '#000000'){
   if(Number(move.leftMove) === Number(2)){
@@ -323,17 +326,5 @@ function showmove(cellA,cellR,pawn,color){
     });
 }
 //special cell
-function specialCell(cell){
-  
-  document.querySelector(`.js-cell-${cell}`).classList.add("sp-cell")
-      for(let l=1;l<=64;l++){
-        if(l === Number(`${cell}`)){
-          continue
-        }else{
-          document.querySelector(`.js-cell-${l}`).classList.remove("sp-cell");
-        
-        }
-        
-      }
-}
+
 
