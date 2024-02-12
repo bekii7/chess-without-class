@@ -82,16 +82,18 @@ body{
 
   cursor: pointer;
 }
-.heir{
-  background-color: white;
+.taker{
+  background-color: transparent;
+  border: none;
+
+  position: absolute;
+  top: 24px;
+  right:3px;
+
+  cursor: pointer;
+
+  font-size: 25px;
+
+
 }
 
-.js-cell-{
-  background-color: red;
-}
-.nk{
-  background-color: blue;
-}
-.rook-b-{
-  background-color: red;
-}

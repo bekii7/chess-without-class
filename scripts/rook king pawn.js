@@ -216,11 +216,16 @@ function movePawn(pawn,nextMove,previousMove,color,left){
   } 
 
 function mover(pawn,nextMove,previousMove,color,left){
-  move.pawn= pawn,
-  move.nextMove= Number(` ${nextMove}`),
-  move.previousMove= Number(`${previousMove}`),
-  move.color= color
-  move.leftMove = Number(`${left}`)
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
+  }
+
+  if(document.querySelector(`.js-show-move`)){
+    document.querySelector(`.js-show-move`).remove()
+  
+  }
+  }
 
   move.pawn= pawn,
   move.nextMove= Number(` ${nextMove}`),
@@ -278,10 +283,20 @@ function showmove(cellA,cellR,pawn,color){
   
   materials(`${cellA}`,'pawn',`${pawn}`,`${color}`)
   document.querySelector(`.js-cell-${cellR} .${pawn}`).remove()
-  if(Number(move.leftMove) === Number(2)){
-    document.querySelector(`.js-show-move`).remove()
-    
+
+
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
   }
+
+  if(document.querySelector(`.js-show-move`)){
+    document.querySelector(`.js-show-move`).remove()
+  
+  }
+  }
+  
+  
   //move updated
   if (color === '#000000' ){
   if(Number(cellA) === Number(move.nextMove)){
@@ -297,7 +312,14 @@ function showmove(cellA,cellR,pawn,color){
     if(Number(move.leftMove) === Number(2)){
       move.leftMove-=1
     }
-    }}
+    }else{
+      move.nextMove = Number(cellA)+8
+      move.previousMove =cellA
+      if(Number(move.leftMove) === Number(2)){
+        move.leftMove-=1
+    }
+  }
+  }
     
     if (color === '#909192' ){
       if(Number(cellA) === Number(move.nextMove)){
@@ -314,9 +336,14 @@ function showmove(cellA,cellR,pawn,color){
           move.leftMove-=1
         }
         }
-      }
-
-
+        else{
+          move.nextMove = Number(cellA)-8
+          move.previousMove =cellA
+          if(Number(move.leftMove) === Number(2)){
+            move.leftMove-=1
+        }
+      }}
+      
 
 
   document.querySelector(`.${pawn}`).addEventListener("click",()=>{
@@ -325,6 +352,6 @@ function showmove(cellA,cellR,pawn,color){
     
     });
 }
-//special cell
+
 
 

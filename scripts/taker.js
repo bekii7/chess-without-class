@@ -11,27 +11,30 @@ function takerPawn(pawn,previousMove,color){
   
   if( colorPawn.toString() === `rgb(0, 0, 0)`){
     
-    remove(elementp9,pawn)
-    remove(elementp7,pawn)
+    remove(elementp9,pawn,previousMove,color)
+    remove(elementp7,pawn,previousMove,color)
   }
 
   if (colorPawn.toString() === `rgb(144, 145, 146)`){
     
-  remove(elementm9,pawn)
-  remove(elementm7,pawn)
+  remove(elementm9,pawn,previousMove,color)
+  remove(elementm7,pawn,previousMove,color)
 
 }}
 
+
+function remove(element,pawn,previousMove,color){
+  if(document.querySelector(`.js-cell-${element}`).innerHTML !=='' && 
+   document.querySelector(`.js-cell-${element} .fa-solid`).style.color !== document.querySelector(`.${pawn} .fa-solid`).style.color){
+    
+    document.querySelector(`.js-cell-${element}`).innerHTML = document.querySelector(`.js-cell-${element}`).innerHTML + `<button class="taker js-taker" ><i class="fa-regular fa-circle fa-2xl" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${element} .js-taker`).addEventListener("click",()=>{
+      showmove(`${element}`,`${previousMove}`,`${pawn}`,`${color}` )})
+}
+}
 function specialTaken(cell){
   document.querySelector(`.js-cell-${cell}`).classList.add('taken-cell')
 }
-function remove(element,pawn){
-  if(document.querySelector(`.js-cell-${element}`).innerHTML !=='' && 
-   document.querySelector(`.js-cell-${element} .fa-solid`).style.color !== document.querySelector(`.${pawn} .fa-solid`).style.color){
-    specialTaken(element)
-}
-}
-
 
 /*
 function hexToRgb(hex) {
