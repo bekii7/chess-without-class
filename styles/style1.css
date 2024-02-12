@@ -96,4 +96,9 @@ body{
 
 
 }
-
+.queen-w{
+  background-color: red;
+}
+.queen-b{
+  background-color: red;
+}

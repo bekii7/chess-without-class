@@ -227,6 +227,11 @@ function mover(pawn,nextMove,previousMove,color,left){
   }
   }
 
+//pawn to queen
+  
+
+
+
   move.pawn= pawn,
   move.nextMove= Number(` ${nextMove}`),
   move.previousMove= Number(`${previousMove}`),
@@ -239,7 +244,7 @@ for(i=1;i<=20;i++){
 }
 
     specialCell(`${previousMove}`)
-  //next possible moves
+  //next possible moves when left move is 2
   
   if(color === '#000000'){
     takerPawn(pawn,previousMove,color)
@@ -266,7 +271,9 @@ for(i=1;i<=20;i++){
   if(color === '#000000'){
   if(Number(move.leftMove) === Number(2)){
     document.querySelector(`.js-cell-${Number(nextMove)+8} .js-show-move`).addEventListener("click",()=>{
+      
       showmove(`${Number(nextMove)+8}`,`${previousMove}`,`${pawn}`,`${color}` )
+      
     })}}
     if(color === '#909192'){
       if(Number(move.leftMove) === Number(2)){
@@ -275,6 +282,7 @@ for(i=1;i<=20;i++){
         })
     }
   }
+  
 }
   
 
@@ -295,7 +303,14 @@ function showmove(cellA,cellR,pawn,color){
   
   }
   }
-  
+  if((57<=`${Number(cellA)}`)){
+    console.log(`hello`)
+    pawnToQueen(pawn,Number(cellA),cellR,color)
+  }
+  if((8>=`${Number(cellA)}`)){
+    console.log(`hello`)
+    pawnToQueen(pawn,Number(cellA),cellR,color)
+  }
   
   //move updated
   if (color === '#000000' ){
@@ -353,5 +368,23 @@ function showmove(cellA,cellR,pawn,color){
     });
 }
 
+function pawnToQueen(pawn,nextMove,previousMove,color){
+  
+    console.log(`hello`)
+    document.querySelector(`.js-cell-${nextMove}`).innerHTML = `<button class="icons queen-b"><i class="fa-solid fa-chess-queen fa-2xl" style="color: ${color};"></i></button>`
 
+    
+    if(color=== `#000000`){
+      document.querySelector(`.js-cell-${nextMove}`).innerHTML = `<button class="icons queen-b"><i class="fa-solid fa-chess-queen fa-2xl" style="color: ${color};"></i></button>`
+      document.querySelector(`.js-cell-${nextMove} .queen`).addEventListener("click",()=>{
+      moverQueen(`queen-b`,`${nextMove}`,`${color}`)  })
+    }
+    if(color=== `#909192`){
+      document.querySelector(`.js-cell-${nextMove}`).innerHTML = `<button class="icons queen-w"><i class="fa-solid fa-chess-queen fa-2xl" style="color: ${color};"></i></button>`
+      document.querySelector(`.js-cell-${nextMove} .queen-w`).addEventListener("click",()=>{
+      moverQueen(`queen-w`,`${nextMove}`,`${color}`)  })
+    }
+  
+  
+}
 

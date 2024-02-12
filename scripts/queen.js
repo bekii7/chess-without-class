@@ -204,7 +204,7 @@ function showMoveQ(queen,previousMove,nextMove,color){
   document.querySelector(`.js-cell-${previousMove} .${queen}`).remove()
 
   document.querySelector(`.js-cell-${nextMove} .${queen}`).addEventListener("click",()=>{
-    console.log(88)
+    
     moverQueen(`${queen}`,`${nextMove}`,`${color}`)})
 
     for(i=1;i<=20;i++){
