@@ -8,7 +8,7 @@ moveRook(`rook-w-r`,`64`,`#909192`)
 moveKing(`5`,`king-b`,`#000000`)
 moveKing(`61`,`king-w`,`#909192`)
 
-//the move for the pawn
+// pawn
 movePawn('pawn-b-1','17','9','#000000',`2`)
 movePawn('pawn-b-2','18','10','#000000',`2`)
 movePawn('pawn-b-3','19','11','#000000',`2`)
@@ -39,12 +39,21 @@ function moverRook(rook,previousMove,color){
   for(i=1;i<=20;i++){
     reset()
   }
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
+  }}
   specialCell(`${previousMove}`)
    show=0
   for(let i =Number(`${previousMove}`);i<=64;i+=8){
     if(i===Number(`${previousMove}`)){
       continue
     }
+
+    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+      if(document.querySelector(`.${rook} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+        takerRook(rook,previousMove,`${i}`,color)}}
+
     if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
       
       break
@@ -66,6 +75,9 @@ function moverRook(rook,previousMove,color){
     (leftMove===Number(64-`${previousMove}`) && (56>Number(`${previousMove}`)<=64))){
       break
     }
+    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+      if(document.querySelector(`.${rook} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+        takerRook(rook,previousMove,`${i}`,color)}}
     if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
       
       break
@@ -88,6 +100,9 @@ function moverRook(rook,previousMove,color){
     (leftMove===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
       break
     }
+    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+      if(document.querySelector(`.${rook} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+        takerRook(rook,previousMove,`${i}`,color)}}
     if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
       
       break
@@ -104,6 +119,9 @@ function moverRook(rook,previousMove,color){
     if(i===Number(`${previousMove}`)){
       continue
     }
+    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+      if(document.querySelector(`.${rook} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+        takerRook(rook,previousMove,`${i}`,color)}}
     if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !== ``){
       
       break
@@ -116,6 +134,8 @@ function moverRook(rook,previousMove,color){
     leftMove++
   }
 }
+
+
 function showMoveR(rook,previousMove,nombre,color){
   materials(`${nombre}`,`rook`,`${rook}`,`${color}`)
   document.querySelector(`.js-cell-${previousMove} .${rook}`).remove()
@@ -125,7 +145,7 @@ moveR.previousMove= `${nombre}`
 moveR.color= `${color}`
 
 document.querySelector(`.js-cell-${nombre} .${rook}`).addEventListener("click",()=>{
-  console.log(88)
+
   moverRook(`${rook}`,`${nombre}`,`${color}`)
   
   })
@@ -133,7 +153,10 @@ document.querySelector(`.js-cell-${nombre} .${rook}`).addEventListener("click",(
     document.querySelector(`.js-show-move`).remove()
   
 }
-
+for (let i=0;i<=20;i++){
+  if(document.querySelector(`.taker`)){
+  document.querySelector(`.taker`).remove()
+}}
 
 
 //king
@@ -154,6 +177,10 @@ function moverKing(previousMove,king,color){
   for(i=1;i<=20;i++){
     reset()
   }
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
+  }}
   let nextmovemet=`${previousMove}`
   
 kingMover(previousMove,king,color,Number(-9))
@@ -181,12 +208,20 @@ function showMoveK(previousMove,king,cell,color){
 function kingMover(previousMove,king,color,x){
   let cell=Number(Number(previousMove)+(x))
   if(Number(Number(previousMove)+(x))>=1 && Number(Number(previousMove)+(x))<=64){
+
+    if(document.querySelector(`.js-cell-${cell} .fa-solid`)){
+      if(document.querySelector(`.${king} .fa-solid`).style.color !== document.querySelector(`.js-cell-${cell} .fa-solid`).style.color ){
+        takerKing(king,previousMove,color,cell)}}
+
     if(document.querySelector(`.js-cell-${cell}`).innerHTML=== ''){
     document.querySelector(`.js-cell-${cell}`).innerHTML=  `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${cell} .js-show-move`).addEventListener("click",()=>{
     showMoveK(previousMove,king,cell,color)})}
     }
-
+    for (let i=0;i<=20;i++){
+      if(document.querySelector(`.taker`)){
+      document.querySelector(`.taker`).remove()
+    }}
     
 }
 //pawn
