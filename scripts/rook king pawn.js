@@ -304,11 +304,11 @@ function showmove(cellA,cellR,pawn,color){
   }
   }
   if((57<=`${Number(cellA)}`)){
-    console.log(`hello`)
+    
     pawnToQueen(pawn,Number(cellA),cellR,color)
   }
   if((8>=`${Number(cellA)}`)){
-    console.log(`hello`)
+    
     pawnToQueen(pawn,Number(cellA),cellR,color)
   }
   
@@ -367,7 +367,7 @@ function showmove(cellA,cellR,pawn,color){
     
     });
 }
-
+//pawn to queen
 function pawnToQueen(pawn,nextMove,previousMove,color){
   
     console.log(`hello`)

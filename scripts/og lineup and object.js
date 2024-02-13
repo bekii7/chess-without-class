@@ -239,7 +239,14 @@ function materials(cell,ic,cls,color){
         }
   }  
  
-
+  function reset(){
+    if(document.querySelector(`.js-show-move`)){
+        document.querySelector(`.js-show-move`).remove()
+  
+    }
+      
+       
+  }
 
 
 

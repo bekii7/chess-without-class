@@ -28,6 +28,10 @@ function moverBishop(bishop,previousMove,color){
   for(i=1;i<=20;i++){
     reset()
   }
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
+  }}
 
   moveB.bishop=`${bishop}`
   moveB.previousMove = `${previousMove}`
@@ -45,8 +49,15 @@ function moverBishop(bishop,previousMove,color){
     (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
     (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
     (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
+      
       break
     }
+    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+          if(document.querySelector(`.${bishop} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+      takerBishop(bishop,previousMove,`${i}`,color)
+    }
+    }
+
     if(i===Number(`${previousMove}`)){
       continue
     }
@@ -72,6 +83,11 @@ function moverBishop(bishop,previousMove,color){
     (showCountI===Number(64-`${previousMove}`) && (56>Number(`${previousMove}`)<=64))){
       break
     }
+    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+      if(document.querySelector(`.${bishop} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+  takerBishop(bishop,previousMove,`${i}`,color)
+}
+}
     if(i===Number(`${previousMove}`)){
       continue
     }
@@ -87,7 +103,7 @@ function moverBishop(bishop,previousMove,color){
   Numberspecial++
   showCountI++} 
   showCountI = 0
- for(let j=Number(`${previousMove}`);j<=64;j-=9){
+ for(let i=Number(`${previousMove}`);i<=64;i-=9){
       
       if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
       (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
@@ -95,20 +111,25 @@ function moverBishop(bishop,previousMove,color){
       (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
         break
       }
-      
-    if(j===Number(`${previousMove}`)){
+      if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+        if(document.querySelector(`.${bishop} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+    takerBishop(bishop,previousMove,`${i}`,color)
+  }
+  }
+
+    if(i===Number(`${previousMove}`)){
         continue
       }
-      if(document.querySelector(`.js-cell-${Number(j)}`).innerHTML !==''){
+      if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !==''){
       
         break
         
       }
       
     
-    document.querySelector(`.js-cell-${j}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
-    document.querySelector(`.js-cell-${j} .js-show-move`).addEventListener("click",()=>{
-      showmoveB(bishop,previousMove,`${j}`,color)})
+    document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
+      showmoveB(bishop,previousMove,`${i}`,color)})
     Numberspecial++
     showCountI++}
 
@@ -123,6 +144,11 @@ function moverBishop(bishop,previousMove,color){
     (showCountI===Number(64-`${previousMove}`) && (56<Number(`${previousMove}`)<=64))){
       break
     }
+    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
+      if(document.querySelector(`.${bishop} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
+  takerBishop(bishop,previousMove,`${i}`,color)
+}
+}
     if(i===Number(`${previousMove}`)){
       continue
     }
@@ -133,7 +159,7 @@ function moverBishop(bishop,previousMove,color){
     if (i<=0){
       break
     }
-    console.log(i)
+    
      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
       showmoveB(bishop,previousMove,`${i}`,color)})
@@ -141,11 +167,7 @@ function moverBishop(bishop,previousMove,color){
     showCountI++
   }
     
-    
-    
-  
-  
-  
+
 }
 
    
@@ -168,10 +190,13 @@ function showmoveB(bishop,previousMove,nextMove,color){
     //moveBishop(moveB.bishop,moveB.previousMove,moveB.color)
     
     document.querySelector(`.js-cell-${previousMove} .${bishop}`).remove()
-    for(i=1;i<=Numberspecial;i++){
-      document.querySelector(`.js-show-move`).remove()
-    
-  }
+    for(i=1;i<=20;i++){
+      reset()
+    } 
+    for (let i=0;i<=20;i++){
+      if(document.querySelector(`.taker`)){
+      document.querySelector(`.taker`).remove()
+    }}
 }
 function showMoveCreate(nombre){
   for(let i=Number(`${previousMove}`);i<=64;i+=Number(nombre)){
@@ -210,7 +235,10 @@ function moverKnight(knight,previousMove,color){
   for(i=1;i<=20;i++){
     reset()
   }
-  
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
+  }}
   
   if(true){
     moveK.knight = knight
@@ -235,7 +263,10 @@ let keys = Object.keys(nextMoveK)
 
 for (let i = 0 ;i<keys.length;i++){
   let key = keys[i]
-  
+  //taker bishop\
+
+
+
   if(nextMoveK[key]>0){
     if(Number(previousMove)===2 && Number(nextMoveK[key])===8 || Number(previousMove)===1 && Number(nextMoveK[key])===7 || Number(previousMove)===1 && Number(nextMoveK[key])===16 || Number(previousMove)===7 && Number(nextMoveK[key])===1 || Number(previousMove)===7 && Number(nextMoveK[key])===17 || Number(previousMove)===8 && Number(nextMoveK[key])===2 || Number(previousMove)===8 && Number(nextMoveK[key])===18 || Number(previousMove)===8 && Number(nextMoveK[key])===25 || Number(previousMove)===9 && Number(nextMoveK[key])===15 || Number(previousMove)===9 && Number(nextMoveK[key])===24 || Number(previousMove)===10 && Number(nextMoveK[key])===16 || Number(previousMove)===15 && Number(nextMoveK[key])===9 || Number(previousMove)===15 && Number(nextMoveK[key])===25){
       continue
@@ -249,6 +280,13 @@ for (let i = 0 ;i<keys.length;i++){
 }
 if(Number(previousMove)===41 && Number(nextMoveK[key])===47 || Number(previousMove)===41 && Number(nextMoveK[key])===56 || Number(previousMove)===42 && Number(nextMoveK[key])===32 || Number(previousMove)===42 && Number(nextMoveK[key])===48 || Number(previousMove)===47 && Number(nextMoveK[key])===41 || Number(previousMove)===47 && Number(nextMoveK[key])===57 || Number(previousMove)===48 && Number(nextMoveK[key])===33 || Number(previousMove)===48 && Number(nextMoveK[key])===42 || Number(previousMove)===48 && Number(nextMoveK[key])===58 || Number(previousMove)===49 && Number(nextMoveK[key])===32 || Number(previousMove)===49 && Number(nextMoveK[key])===39 || Number(previousMove)===49 && Number(nextMoveK[key])===55 || Number(previousMove)===49 && Number(nextMoveK[key])===64 || Number(previousMove)===50 && Number(nextMoveK[key])===40 || Number(previousMove)===50 && Number(nextMoveK[key])===56 || Number(previousMove)===55 && Number(nextMoveK[key])===49 || Number(previousMove)===56 && Number(nextMoveK[key])===41 || Number(previousMove)===56 && Number(nextMoveK[key])===50 || Number(previousMove)===57 && Number(nextMoveK[key])===40 || Number(previousMove)===57 && Number(nextMoveK[key])===47 || Number(previousMove)===57 && Number(nextMoveK[key])===63 || Number(previousMove)===58 && Number(nextMoveK[key])===48 || Number(previousMove)===58 && Number(nextMoveK[key])===64 || Number(previousMove)===63 && Number(nextMoveK[key])===57 || Number(previousMove)===64 && Number(nextMoveK[key])===49 || Number(previousMove)===64 && Number(nextMoveK[key])===58){
   continue
+}
+if(1<=Number(nextMoveK[key]) && Number(nextMoveK[key]) <=64){
+  if(document.querySelector(`.js-cell-${nextMoveK[key]}`).innerHTML !== ``){
+  if(document.querySelector(`.js-cell-${nextMoveK[key]} .fa-solid`).style.color !== document.querySelector(`.${knight} .fa-solid`).style.color){
+  takerknight(knight,previousMove,color,numSpecial,key)
+}
+}
 }
 if(document.querySelector(`.js-cell-${nextMoveK[key]}`).innerHTML !=''){
   continue
@@ -271,7 +309,7 @@ function showmoveK(move,knight,previousMove,color,numSpecial){
   
   
 
-  if(true){
+  if(document.querySelector(`.js-cell-${previousMove} .${knight}`)){
       document.querySelector(`.js-cell-${previousMove} .${knight}`).remove()
 
   }
@@ -296,16 +334,13 @@ function showmoveK(move,knight,previousMove,color,numSpecial){
     moveKnight(moveK.knight,moveK.previousMove,moveK.color)
     
     })
-  for(let i = 0;i<numSpecial;i++){
-  document.querySelector(`.js-show-move`).remove()
-
-  }
+  for(i=1;i<=20;i++){
+     reset()
 }
-function reset(){
-  if(document.querySelector(`.js-show-move`)){
-      document.querySelector(`.js-show-move`).remove()
-
-  }
-    
-     
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
+  }}
+  
 }
+
