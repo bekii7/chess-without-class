@@ -52,7 +52,13 @@ function takerKing(king,previousMove,color,x){
     showMoveK(previousMove,king,x,color)})
 
 }
-
+//queen
+function   takerQueen(queen,previousMove,i,color){
+  document.querySelector(`.js-cell-${i}`).innerHTML = document.querySelector(`.js-cell-${i}`).innerHTML + `<button class="taker js-taker" ><i class="fa-regular fa-circle fa-2xl" style="color: #ffff00;"></i></button>`;
+  document.querySelector(`.js-cell-${i} .js-taker`).addEventListener("click",()=>{
+    
+    showMoveQ(queen,previousMove,i,color)})
+}
 
 function remove(element,pawn,previousMove,color){
   if(document.querySelector(`.js-cell-${element}`).innerHTML !=='' && 
