@@ -11,9 +11,7 @@ moveKnight('knight-w-r',`${previousMoveWR}`,'#909192')
 
 //bishop
 function moveBishop(bishop,previousMove,color){
-  moveB.bishop=`${bishop}`
-  moveB.previousMove = `${previousMove}`
-  moveB.color=`${color}`
+
   
 
   document.querySelector(`.${bishop}`).addEventListener("click",()=>
@@ -33,9 +31,7 @@ function moverBishop(bishop,previousMove,color){
     document.querySelector(`.taker`).remove()
   }}
 
-  moveB.bishop=`${bishop}`
-  moveB.previousMove = `${previousMove}`
-  moveB.color=`${color}`
+
   
 
   specialCell(`${previousMove}`)
@@ -134,38 +130,47 @@ function moverBishop(bishop,previousMove,color){
     showCountI++}
 
     showCountI = 0
-  for(let i=Number(`${previousMove}`);0<i<=64;i-=7){
-    if(
-    (showCountI===Number(8-`${previousMove}`) && (1<Number(`${previousMove}`)<=8)) ||
-    (showCountI===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)<=16))||
-    (showCountI===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)<=24))||
-    (showCountI===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)<=32))||
-    (showCountI===Number(40-`${previousMove}`) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(48-`${previousMove}`) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(56-`${previousMove}`) && (48<Number(`${previousMove}`)<=56))||
-    (showCountI===Number(64-`${previousMove}`) && (56<Number(`${previousMove}`)<=64))){
-      break
-    }
-    if(document.querySelector(`.js-cell-${i} .fa-solid`)){
-      if(document.querySelector(`.${bishop} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
-  takerBishop(bishop,previousMove,`${i}`,color)
-}
-}
-    if(i===Number(`${previousMove}`)){
-      continue
-    }
-    
-    if(document.querySelector(`.js-cell-${Number(i)}`).innerHTML !=''){
-      break
-    }
-    if (i<=0){
-      break
-    }
-    
-     document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
-    document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
-      showmoveB(bishop,previousMove,`${i}`,color)})
-    Numberspecial++
-    showCountI++
+    for (let i = Number(previousMove); i > 0 && i <= 64; i -= 7) {
+      if (
+          (showCountI === 8 - Number(previousMove) && (1 < Number(previousMove) <= 8)) ||
+          (showCountI === 16 - Number(previousMove) && (8 < Number(previousMove) <= 16)) ||
+          (showCountI === 24 - Number(previousMove) && (16 < Number(previousMove) <= 24)) ||
+          (showCountI === 32 - Number(previousMove) && (24 < Number(previousMove) <= 32)) ||
+          (showCountI === 40 - Number(previousMove) && (32 < Number(previousMove) <= 40)) ||
+          (showCountI === 48 - Number(previousMove) && (40 < Number(previousMove) <= 48)) ||
+          (showCountI === 56 - Number(previousMove) && (48 < Number(previousMove) <= 56)) ||
+          (showCountI === 64 - Number(previousMove) && (56 < Number(previousMove) <= 64))
+      ) {
+          break;
+      }
+  
+      if (document.querySelector(`.js-cell-${i} .fa-solid`)) {
+          if (document.querySelector(`.${bishop} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color) {
+              takerBishop(bishop, previousMove, `${i}`, color);
+          }
+      }
+  
+      if (i === Number(previousMove)) {
+          continue;
+      }
+  
+      if (document.querySelector(`.js-cell-${i}`).innerHTML !== '') {
+          break;
+      }
+  
+      if (i <= 0) {
+          break;
+      }
+  
+      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
+      document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click", () => {
+          showmoveB(bishop, previousMove, `${i}`, color);
+      });
+  
+      Numberspecial++;
+      showCountI++;
   }
+  
     
 
 }
@@ -275,7 +280,7 @@ for (let i = 0 ;i<keys.length;i++){
     continue
   }
   if(nextMoveK[key]>0){
-    if(Number(previousMove)===33 && Number(nextMoveK[key])===18 || Number(previousMove)===33 && Number(nextMoveK[key])===27  ||  Number(previousMove)===33 && Number(nextMoveK[key])===43 || Number(previousMove)===33 && Number(nextMoveK[key])===50 || Number(previousMove)===34 && Number(nextMoveK[key])===24 || Number(previousMove)===34 && Number(nextMoveK[key])===40 || Number(previousMove)===39 && Number(nextMoveK[key])===33 || Number(previousMove)===39 && Number(nextMoveK[key])===49 || Number(previousMove)===40 && Number(nextMoveK[key])===25 || Number(previousMove)===40 && Number(nextMoveK[key])===34 || Number(previousMove)===40 && Number(nextMoveK[key])===50 || Number(previousMove)===40 && Number(nextMoveK[key])===57 || Number(previousMove)===41 && Number(nextMoveK[key])===24 || Number(previousMove)===41 && Number(nextMoveK[key])===31){
+    if(Number(previousMove)===33 && Number(nextMoveK[key])===16 || Number(previousMove)===33 && Number(nextMoveK[key])===23  ||  Number(previousMove)===33 && Number(nextMoveK[key])===39 || Number(previousMove)===33 && Number(nextMoveK[key])===48 || Number(previousMove)===34 && Number(nextMoveK[key])===24 || Number(previousMove)===34 && Number(nextMoveK[key])===40 || Number(previousMove)===39 && Number(nextMoveK[key])===33 || Number(previousMove)===39 && Number(nextMoveK[key])===49 || Number(previousMove)===40 && Number(nextMoveK[key])===25 || Number(previousMove)===40 && Number(nextMoveK[key])===34 || Number(previousMove)===40 && Number(nextMoveK[key])===50 || Number(previousMove)===40 && Number(nextMoveK[key])===57 || Number(previousMove)===41 && Number(nextMoveK[key])===24 || Number(previousMove)===41 && Number(nextMoveK[key])===31){
       continue}
 }
 if(Number(previousMove)===41 && Number(nextMoveK[key])===47 || Number(previousMove)===41 && Number(nextMoveK[key])===56 || Number(previousMove)===42 && Number(nextMoveK[key])===32 || Number(previousMove)===42 && Number(nextMoveK[key])===48 || Number(previousMove)===47 && Number(nextMoveK[key])===41 || Number(previousMove)===47 && Number(nextMoveK[key])===57 || Number(previousMove)===48 && Number(nextMoveK[key])===33 || Number(previousMove)===48 && Number(nextMoveK[key])===42 || Number(previousMove)===48 && Number(nextMoveK[key])===58 || Number(previousMove)===49 && Number(nextMoveK[key])===32 || Number(previousMove)===49 && Number(nextMoveK[key])===39 || Number(previousMove)===49 && Number(nextMoveK[key])===55 || Number(previousMove)===49 && Number(nextMoveK[key])===64 || Number(previousMove)===50 && Number(nextMoveK[key])===40 || Number(previousMove)===50 && Number(nextMoveK[key])===56 || Number(previousMove)===55 && Number(nextMoveK[key])===49 || Number(previousMove)===56 && Number(nextMoveK[key])===41 || Number(previousMove)===56 && Number(nextMoveK[key])===50 || Number(previousMove)===57 && Number(nextMoveK[key])===40 || Number(previousMove)===57 && Number(nextMoveK[key])===47 || Number(previousMove)===57 && Number(nextMoveK[key])===63 || Number(previousMove)===58 && Number(nextMoveK[key])===48 || Number(previousMove)===58 && Number(nextMoveK[key])===64 || Number(previousMove)===63 && Number(nextMoveK[key])===57 || Number(previousMove)===64 && Number(nextMoveK[key])===49 || Number(previousMove)===64 && Number(nextMoveK[key])===58){
@@ -344,3 +349,4 @@ function showmoveK(move,knight,previousMove,color,numSpecial){
   
 }
 
+ 

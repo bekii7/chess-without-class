@@ -123,9 +123,13 @@ function moverQueen(queen,previousMove,color){
   for(let i=Number(`${previousMove}`);i<=64;i+=7){
     console.log(88)
     if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
-    (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
-    (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
-    (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
+    (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`) && Number(`${previousMove}`)<=16)) ||
+    (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)&& Number(`${previousMove}`)<=24))||
+    (showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)&& Number(`${previousMove}`)<=32))||
+    (showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)&& Number(`${previousMove}`)<=40))||
+    (showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)&& Number(`${previousMove}`)<=48))||
+    (showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)&& Number(`${previousMove}`)<=56))||
+    (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)&& Number(`${previousMove}`)<=64))){
       break
     }
     if(i===Number(`${previousMove}`)){
@@ -149,16 +153,16 @@ function moverQueen(queen,previousMove,color){
      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
       showMoveQ(queen,previousMove,`${i}`,color)})
-    Numberspecial++
+
     showCountI++
     
   }
    showCountI = 0
   for(let i=Number(`${previousMove}`);i<=64;i+=9){
     if((showCountI===Number(8-`${previousMove}`) && Number(`${previousMove}`)<=8)||
-    (showCountI===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)<=16)) ||
-    (showCountI===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(40-`${previousMove}`) && (32>Number(`${previousMove}`)<=40))||(showCountI===Number(48-`${previousMove}`) && (40>Number(`${previousMove}`)<=48))||(showCountI===Number(56-`${previousMove}`) && (48>Number(`${previousMove}`)<=56))||
-    (showCountI===Number(64-`${previousMove}`) && (56>Number(`${previousMove}`)<=64))){
+    (showCountI===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`) && Number(`${previousMove}`)<=16)) ||
+    (showCountI===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)&&Number(`${previousMove}`)<=24))||(showCountI===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)&&Number(`${previousMove}`)<=32))||(showCountI===Number(40-`${previousMove}`) && (32>Number(`${previousMove}`)&&Number(`${previousMove}`)<=40))||(showCountI===Number(48-`${previousMove}`) && (40>Number(`${previousMove}`)&&Number(`${previousMove}`)<=48))||(showCountI===Number(56-`${previousMove}`) && (48>Number(`${previousMove}`)&&Number(`${previousMove}`)<=56))||
+    (showCountI===Number(64-`${previousMove}`) && (56>Number(`${previousMove}`)&&Number(`${previousMove}`)<=64))){
       break
     }
     if(i===Number(`${previousMove}`)){
@@ -172,16 +176,16 @@ function moverQueen(queen,previousMove,color){
   document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
   document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
     showMoveQ(queen,previousMove,`${i}`,color)})
-  Numberspecial++
+
   showCountI++} 
   showCountI = 0
   if(Number(`${previousMove}`)>=10){
  for(let j=Number(`${previousMove}`);j<=64;j-=9){
       
-      if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)<=8)||
-      (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)<=16)) ||
-      (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)<=56))||
-      (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)<=64))){
+      if((showCountI===Number(`${previousMove}`-1) && Number(`${previousMove}`)&&Number(`${previousMove}`)<=8)||
+      (showCountI===Number(`${previousMove}`-9) && (8<Number(`${previousMove}`)&&Number(`${previousMove}`)<=16)) ||
+      (showCountI===Number(`${previousMove}`-17) && (16<Number(`${previousMove}`)&&Number(`${previousMove}`)&&Number(`${previousMove}`)<=24))||(showCountI===Number(`${previousMove}`-25) && (24<Number(`${previousMove}`)&&Number(`${previousMove}`)<=32))||(showCountI===Number(`${previousMove}`-33) && (32<Number(`${previousMove}`)&&Number(`${previousMove}`)<=40))||(showCountI===Number(`${previousMove}`-41) && (40<Number(`${previousMove}`)&&Number(`${previousMove}`)<=48))||(showCountI===Number(`${previousMove}`-49) && (48<Number(`${previousMove}`)&&Number(`${previousMove}`)<=56))||
+      (showCountI===Number(`${previousMove}`-57) && (56<Number(`${previousMove}`)&&Number(`${previousMove}`)<=64))){
         break
       }
       
@@ -191,9 +195,9 @@ function moverQueen(queen,previousMove,color){
       if(i===Number(`${previousMove}`)){
         continue
       }
-      if(document.querySelector(`.js-cell-${i} .fa-solid`)){
-        if(document.querySelector(`.${queen} .fa-solid`).style.color !== document.querySelector(`.js-cell-${i} .fa-solid`).style.color ){
-    takerQueen(queen,previousMove,i,color)
+      if(document.querySelector(`.js-cell-${j} .fa-solid`)){
+        if(document.querySelector(`.${queen} .fa-solid`).style.color !== document.querySelector(`.js-cell-${j} .fa-solid`).style.color ){
+    takerQueen(queen,previousMove,j,color)
   }
   }
       if(document.querySelector(`.js-cell-${Number(j)}`).innerHTML !==''){
@@ -206,19 +210,19 @@ function moverQueen(queen,previousMove,color){
     document.querySelector(`.js-cell-${j}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${j} .js-show-move`).addEventListener("click",()=>{
       showMoveQ(queen,previousMove,`${j}`,color)})
-    Numberspecial++
-    showCountI++}}
 
+    showCountI++}}
+  
     showCountI = 0
   if(Number(`${previousMove}`)>=8){
   for(let i=Number(`${previousMove}`);0<i<=64;i-=7){
     if(
-    (showCountI===Number(8-`${previousMove}`) && (1<Number(`${previousMove}`)<=8)) ||
-    (showCountI===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)<=16))||
-    (showCountI===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)<=24))||
-    (showCountI===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)<=32))||
-    (showCountI===Number(40-`${previousMove}`) && (32<Number(`${previousMove}`)<=40))||(showCountI===Number(48-`${previousMove}`) && (40<Number(`${previousMove}`)<=48))||(showCountI===Number(56-`${previousMove}`) && (48<Number(`${previousMove}`)<=56))||
-    (showCountI===Number(64-`${previousMove}`) && (56<Number(`${previousMove}`)<=64))){
+    (showCountI===Number(8-`${previousMove}`) && (1<Number(`${previousMove}`)&&Number(`${previousMove}`)<=8)) ||
+    (showCountI===Number(16-`${previousMove}`) && (8<Number(`${previousMove}`)&&Number(`${previousMove}`)<=16))||
+    (showCountI===Number(24-`${previousMove}`) && (16<Number(`${previousMove}`)&&Number(`${previousMove}`)<=24))||
+    (showCountI===Number(32-`${previousMove}`) && (24<Number(`${previousMove}`)&&Number(`${previousMove}`)<=32))||
+    (showCountI===Number(40-`${previousMove}`) && (32<Number(`${previousMove}`)&&Number(`${previousMove}`)<=40))||(showCountI===Number(48-`${previousMove}`) && (40<Number(`${previousMove}`)&&Number(`${previousMove}`)<=48))||(showCountI===Number(56-`${previousMove}`) && (48<Number(`${previousMove}`)&&Number(`${previousMove}`)<=56))||
+    (showCountI===Number(64-`${previousMove}`) && (56<Number(`${previousMove}`)&&Number(`${previousMove}`)<=64))){
       break
     }
     if(i===Number(`${previousMove}`)){
@@ -243,7 +247,7 @@ function moverQueen(queen,previousMove,color){
      document.querySelector(`.js-cell-${i}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${i} .js-show-move`).addEventListener("click",()=>{
       showMoveQ(queen,previousMove,`${i}`,color)})
-    Numberspecial++
+
     showCountI++
   }
 }}
@@ -263,4 +267,4 @@ function showMoveQ(queen,previousMove,nextMove,color){
       if(document.querySelector(`.taker`)){
       document.querySelector(`.taker`).remove()
     }}
-  }
+  } 
