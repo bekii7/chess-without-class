@@ -249,7 +249,7 @@ function materials(cell,ic,cls,color){
   }
 
 let check = false 
-
+let turn = `#909192`
 
 
 //to remove the js-show-move

@@ -57,7 +57,7 @@ body{
 
   border: none;
 
-  cursor: pointer;
+  cursor: grab;
   
 }
 
@@ -90,7 +90,7 @@ body{
   top: 24px;
   right:3px;
 
-  cursor: pointer;
+  cursor: grab;
 
   font-size: 25px;
 

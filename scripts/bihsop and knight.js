@@ -35,7 +35,7 @@ function moverBishop(bishop,previousMove,color){
   
 
   specialCell(`${previousMove}`)
-  
+  if(turn === color){
    showCountI = 0
   
   Numberspecial=0
@@ -172,7 +172,7 @@ function moverBishop(bishop,previousMove,color){
   }
   
     
-
+  }
 }
 
    
@@ -189,7 +189,13 @@ function showmoveB(bishop,previousMove,nextMove,color){
     moverBishop(`${bishop}`,`${nextMove}`,`${color}`)
     
     })
-  
+  //turns
+  if (color === `#000000`){
+    turn= `#909192`
+  }
+  if(color===`#909192`){
+    turn = `#000000`
+  }
   
   
     //moveBishop(moveB.bishop,moveB.previousMove,moveB.color)
@@ -263,6 +269,8 @@ function moverKnight(knight,previousMove,color){
   
 
 specialCell(`${previousMove}`)
+
+if(turn === color){
 let numSpecial = 0
 let keys = Object.keys(nextMoveK)
 
@@ -303,7 +311,7 @@ if(document.querySelector(`.js-cell-${nextMoveK[key]}`).innerHTML !=''){
     
   }
  }
-  
+}
 }
 
 function showmoveK(move,knight,previousMove,color,numSpecial){
@@ -339,6 +347,13 @@ function showmoveK(move,knight,previousMove,color,numSpecial){
     moveKnight(moveK.knight,moveK.previousMove,moveK.color)
     
     })
+  //turns
+  if (color === `#000000`){
+    turn= `#909192`
+  }
+  if(color===`#909192`){
+    turn = `#000000`
+  }
   for(i=1;i<=20;i++){
      reset()
 }

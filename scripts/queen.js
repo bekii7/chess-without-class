@@ -17,6 +17,7 @@ function moverQueen(queen,previousMove,color){
     if(document.querySelector(`.taker`)){
     document.querySelector(`.taker`).remove()
   }}
+  if(turn === color){
   leftMove=0
   show=0
   for(let i =Number(`${previousMove}`);i<=64;i+=8){
@@ -250,7 +251,7 @@ function moverQueen(queen,previousMove,color){
 
     showCountI++
   }
-}}
+}}}
 
 function showMoveQ(queen,previousMove,nextMove,color){
   materials(`${nextMove}`,`queen`,`${queen}`,`${color}`)
@@ -259,7 +260,13 @@ function showMoveQ(queen,previousMove,nextMove,color){
   document.querySelector(`.js-cell-${nextMove} .${queen}`).addEventListener("click",()=>{
     
     moverQueen(`${queen}`,`${nextMove}`,`${color}`)})
-
+  //turns
+  if (color === `#000000`){
+    turn= `#909192`
+  }
+  if(color===`#909192`){
+    turn = `#000000`
+  }
     for(i=1;i<=20;i++){
       reset()
     }

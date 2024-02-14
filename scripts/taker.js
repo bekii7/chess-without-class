@@ -65,7 +65,7 @@ function   takerQueen(queen,previousMove,i,color){
     
     showMoveQ(queen,previousMove,i,color)})
 }
-
+//pawn
 function remove(element,pawn,previousMove,color){
   if(document.querySelector(`.js-cell-${element}`).innerHTML !=='' && 
    document.querySelector(`.js-cell-${element} .fa-solid`).style.color !== document.querySelector(`.${pawn} .fa-solid`).style.color){

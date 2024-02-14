@@ -1,11 +1,13 @@
 //rook
 moveRook(`rook-b-l`,`1`,`#000000`)
 moveRook(`rook-b-r`,`8`,`#000000`)
+
 moveRook(`rook-w-l`,`57`,`#909192`)
 moveRook(`rook-w-r`,`64`,`#909192`)
 
 //king
 moveKing(`5`,`king-b`,`#000000`)
+
 moveKing(`61`,`king-w`,`#909192`)
 
 // pawn
@@ -44,6 +46,7 @@ function moverRook(rook,previousMove,color){
     document.querySelector(`.taker`).remove()
   }}
   specialCell(`${previousMove}`)
+  if(color===turn){
    show=0
   for(let i =Number(`${previousMove}`);i<=64;i+=8){
     if(i===Number(`${previousMove}`)){
@@ -133,7 +136,7 @@ function moverRook(rook,previousMove,color){
     show++
     leftMove++
   }
-}
+}}
 
 
 function showMoveR(rook,previousMove,nombre,color){
@@ -149,6 +152,14 @@ document.querySelector(`.js-cell-${nombre} .${rook}`).addEventListener("click",(
   moverRook(`${rook}`,`${nombre}`,`${color}`)
   
   })
+
+ //turns
+if (color === `#000000`){
+  turn= `#909192`
+}
+if(color===`#909192`){
+  turn = `#000000`
+} 
   for(i=1;i<=20;i++){
     document.querySelector(`.js-show-move`).remove()
   
@@ -159,7 +170,7 @@ for (let i=0;i<=20;i++){
 }}
 
 
-//king
+
 }
 
 
@@ -200,13 +211,26 @@ function showMoveK(previousMove,king,cell,color){
   document.querySelector(`.${king}`).addEventListener("click",()=>{
     moverKing(cell,king,color)
   })
+  //turns
+  if (color === `#000000`){
+    turn= `#909192`
+  }
+  if(color===`#909192`){
+    turn = `#000000`
+  }
   for(i=1;i<=20;i++){
     reset()
   }
+  for (let i=0;i<=20;i++){
+    if(document.querySelector(`.taker`)){
+    document.querySelector(`.taker`).remove()
+  }}
 }
 
 function kingMover(previousMove,king,color,x){
   let cell=Number(Number(previousMove)+(x))
+
+  if(turn===color){
   if(Number(Number(previousMove)+(x))>=1 && Number(Number(previousMove)+(x))<=64){
 
     if(document.querySelector(`.js-cell-${cell} .fa-solid`)){
@@ -217,14 +241,13 @@ function kingMover(previousMove,king,color,x){
     document.querySelector(`.js-cell-${cell}`).innerHTML=  `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${cell} .js-show-move`).addEventListener("click",()=>{
     showMoveK(previousMove,king,cell,color)})}
-    }
+    }}
 
     
 }
+
+
 //pawn
-
-
-
 
 function movePawn(pawn,previousMove,color,left){
    
@@ -270,19 +293,29 @@ for(i=1;i<=20;i++){
   let nextMove4 = Number(previousMove)-16
   
   if(color === '#000000'){
-    takerPawn(pawn,previousMove,color)
+    if(turn === `#000000`){
+      if(Number(left) === Number(2) && 
+    document.querySelector(`.js-cell-${nextMove2}`).innerHTML ===''){
+     if(document.querySelector(`.js-cell-${nextMove1}`).innerHTML ===''){
+      document.querySelector(`.js-cell-${nextMove1}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}}
+      takerPawn(pawn,previousMove,color)
     if(document.querySelector(`.js-cell-${nextMove2}`).innerHTML ===''){
-  document.querySelector(`.js-cell-${nextMove2}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}
-  if(Number(left) === Number(2)){
-    if(document.querySelector(`.js-cell-${nextMove1}`).innerHTML ===''){
-    document.querySelector(`.js-cell-${nextMove1}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}}}
+      document.querySelector(`.js-cell-${nextMove2}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}
+    }
+}
+
   if(color === '#909192'){
-    takerPawn(pawn,previousMove,color)
-    if(document.querySelector(`.js-cell-${nextMove3}`).innerHTML ===''){
-    document.querySelector(`.js-cell-${nextMove3}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}
-    if(Number(left) === Number(2)){
-      if(document.querySelector(`.js-cell-${nextMove4}`).innerHTML ===''){
-      document.querySelector(`.js-cell-${nextMove4}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}}}
+    if(turn === `#909192`){
+       if(Number(left) === Number(2) && 
+      document.querySelector(`.js-cell-${nextMove3}`).innerHTML ==='' ){
+        if(document.querySelector(`.js-cell-${nextMove4}`).innerHTML ===''){
+        document.querySelector(`.js-cell-${nextMove4}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}}
+      takerPawn(pawn,previousMove,color)
+      if(document.querySelector(`.js-cell-${nextMove3}`).innerHTML ===''){
+        document.querySelector(`.js-cell-${nextMove3}`).innerHTML = `<button class="show-move js-show-move" ><i class="fa-solid fa-fingerprint fa-lg" style="color: #ffff00;"></i></button>`;}
+     }
+    }
+
     
 
 if(document.querySelector(`.js-cell-${nextMove1} .js-show-move`)){
@@ -341,7 +374,7 @@ function showmove(cellA,cellR,pawn,color,left){
   //move updated
   
     
-console.log(`${Number(cellA)+9}`)
+
       
 
   left-=1
@@ -351,9 +384,25 @@ console.log(`${Number(cellA)+9}`)
     
     });
 
-    if(document.querySelector(`.js-cell-${Number(cellA)+7}`).innerHTML === `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`|| document.querySelector(`.js-cell-${Number(cellA)+9}`).innerHTML=== `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`){
+    //check
+    if(color===`#000000`){
+      if(document.querySelector(`.js-cell-${Number(cellA)+7}`).innerHTML === `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`|| document.querySelector(`.js-cell-${Number(cellA)+9}`).innerHTML=== `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`){
+        check = true
+      }
+    }
+    if(color === `#909192`){
+      if(document.querySelector(`.js-cell-${Number(cellA)-7}`).innerHTML === `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`|| document.querySelector(`.js-cell-${Number(cellA)-9}`).innerHTML=== `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`){
       check = true
-      console.log(check)
+    }
+    }
+    
+
+    //turns
+    if (color === `#000000`){
+      turn= `#909192`
+    }
+    if(color===`#909192`){
+      turn = `#000000`
     }
 }
 //pawn to queen
@@ -378,5 +427,11 @@ function pawnToQueen(pawn,nextMove,previousMove,color){
 }
 
 /*
-
+    //turns
+    if (color === `#000000`){
+      turn= `#909192`
+    }
+    if(color===`#909192`){
+      turn = `#000000`
+    }
 */
