@@ -248,7 +248,7 @@ function materials(cell,ic,cls,color){
        
   }
 
-let check = 0 
+let check = false 
 
 
 

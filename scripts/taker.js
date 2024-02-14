@@ -20,7 +20,8 @@ function takerPawn(pawn,previousMove,color){
   remove(elementm9,pawn,previousMove,color)
   remove(elementm7,pawn,previousMove,color)
 
-}}
+}
+}
 
 //knight
 function takerknight(knight,previousMove,color,numSpecial,key){
@@ -31,7 +32,12 @@ function takerknight(knight,previousMove,color,numSpecial,key){
 
 //bishop
 function takerBishop(bishop,previousMove,i,color){
-  
+  if (document.querySelector(`.js-cell-${i}`).innerHTML === `<button class="icons king-b"><i class="fa-solid fa-chess-king fa-2xl" style="color: #000000;"></i></button>`){
+    console.log(77)
+  }
+
+
+
   document.querySelector(`.js-cell-${i}`).innerHTML = document.querySelector(`.js-cell-${i}`).innerHTML + `<button class="taker js-taker" ><i class="fa-regular fa-circle fa-2xl" style="color: #ffff00;"></i></button>`;
   document.querySelector(`.js-cell-${i} .js-taker`).addEventListener("click",()=>{
     console.log(77)
@@ -67,6 +73,8 @@ function remove(element,pawn,previousMove,color){
     document.querySelector(`.js-cell-${element}`).innerHTML = document.querySelector(`.js-cell-${element}`).innerHTML + `<button class="taker js-taker" ><i class="fa-regular fa-circle fa-2xl" style="color: #ffff00;"></i></button>`;
     document.querySelector(`.js-cell-${element} .js-taker`).addEventListener("click",()=>{
       showmove(`${element}`,`${previousMove}`,`${pawn}`,`${color}` )})
+}if(document.querySelector(`.js-cell-${element}`).innerHTML !=='' && document.querySelector(`.js-cell-${element}`).innerHTML=== `<button class="icons king-b"><i class="fa-solid fa-chess-king fa-2xl" style="color: #000000;"></i></button>`){
+  console.log(66)
 }
 }
 

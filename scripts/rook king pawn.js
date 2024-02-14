@@ -341,7 +341,7 @@ function showmove(cellA,cellR,pawn,color,left){
   //move updated
   
     
-
+console.log(`${Number(cellA)+9}`)
       
 
   left-=1
@@ -350,6 +350,11 @@ function showmove(cellA,cellR,pawn,color,left){
     mover(pawn,cellA,color,left)
     
     });
+
+    if(document.querySelector(`.js-cell-${Number(cellA)+7}`).innerHTML === `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`|| document.querySelector(`.js-cell-${Number(cellA)+9}`).innerHTML=== `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`){
+      check = true
+      console.log(check)
+    }
 }
 //pawn to queen
 function pawnToQueen(pawn,nextMove,previousMove,color){
@@ -372,3 +377,6 @@ function pawnToQueen(pawn,nextMove,previousMove,color){
   
 }
 
+/*
+
+*/
