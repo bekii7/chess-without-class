@@ -263,8 +263,8 @@ function movePawn(pawn,previousMove,color,left){
 
 function mover(pawn,previousMove,color,left){
   for (let i=0;i<=20;i++){
-    if(document.querySelector(`.taker`)){
-    document.querySelector(`.taker`).remove()
+    if(taker){
+    taker.remove()
   }
 
   if(document.querySelector(`.js-show-move`)){
@@ -353,8 +353,8 @@ function showmove(cellA,cellR,pawn,color,left){
 
 
   for (let i=0;i<=20;i++){
-    if(document.querySelector(`.taker`)){
-    document.querySelector(`.taker`).remove()
+    if(taker){
+    taker.remove()
   }
 
   if(document.querySelector(`.js-show-move`)){
@@ -391,8 +391,9 @@ function showmove(cellA,cellR,pawn,color,left){
       }
     }
     if(color === `#909192`){
-      if(document.querySelector(`.js-cell-${Number(cellA)-7}`).innerHTML === `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`|| document.querySelector(`.js-cell-${Number(cellA)-9}`).innerHTML=== `<button class="icons king-w"><i class="fa-solid fa-chess-king fa-2xl" style="color: #909192;"></i></button>`){
+      if(document.querySelector(`.js-cell-${Number(cellA)-7}`).innerHTML === `<button class="icons king-b"><i class="fa-solid fa-chess-king fa-2xl" style="color: #000000;"></i></button>`|| document.querySelector(`.js-cell-${Number(cellA)-9}`).innerHTML=== `<button class="icons king-b"><i class="fa-solid fa-chess-king fa-2xl" style="color: #000000;"></i></button>`){
       check = true
+      
     }
     }
     
@@ -426,12 +427,3 @@ function pawnToQueen(pawn,nextMove,previousMove,color){
   
 }
 
-/*
-    //turns
-    if (color === `#000000`){
-      turn= `#909192`
-    }
-    if(color===`#909192`){
-      turn = `#000000`
-    }
-*/

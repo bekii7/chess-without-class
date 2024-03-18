@@ -247,8 +247,8 @@ function moverKnight(knight,previousMove,color){
     reset()
   }
   for (let i=0;i<=20;i++){
-    if(document.querySelector(`.taker`)){
-    document.querySelector(`.taker`).remove()
+    if(taker){
+      taker.remove()
   }}
   
   if(true){
@@ -317,7 +317,7 @@ if(document.querySelector(`.js-cell-${nextMoveK[key]}`).innerHTML !=''){
 function showmoveK(move,knight,previousMove,color,numSpecial){
 
   
-  materials(`${move}`,`knight`,`${knight}`,`${color}`)
+  materials(move,`knight`,knight,color)
   
   
   
@@ -358,10 +358,41 @@ function showmoveK(move,knight,previousMove,color,numSpecial){
      reset()
 }
   for (let i=0;i<=20;i++){
-    if(document.querySelector(`.taker`)){
-    document.querySelector(`.taker`).remove()
+    if(taker){
+    taker.remove()
   }}
-  
-}
 
- 
+
+  //check
+  let keys = Object.keys(nextMoveK)
+  for (let i = 0 ;i<keys.length;i++){
+    let key = keys[i]
+
+  
+  
+  
+    if(nextMoveK[key]>0){
+      if(Number(previousMove)===2 && Number(nextMoveK[key])===8 || Number(previousMove)===1 && Number(nextMoveK[key])===7 || Number(previousMove)===1 && Number(nextMoveK[key])===16 || Number(previousMove)===7 && Number(nextMoveK[key])===1 || Number(previousMove)===7 && Number(nextMoveK[key])===17 || Number(previousMove)===8 && Number(nextMoveK[key])===2 || Number(previousMove)===8 && Number(nextMoveK[key])===18 || Number(previousMove)===8 && Number(nextMoveK[key])===25 || Number(previousMove)===9 && Number(nextMoveK[key])===15 || Number(previousMove)===9 && Number(nextMoveK[key])===24 || Number(previousMove)===10 && Number(nextMoveK[key])===16 || Number(previousMove)===15 && Number(nextMoveK[key])===9 || Number(previousMove)===15 && Number(nextMoveK[key])===25){
+        continue
+  }
+    if(Number(previousMove)===16 && Number(nextMoveK[key])===1 || Number(previousMove)===16 && Number(nextMoveK[key])===10 || Number(previousMove)===16 && Number(nextMoveK[key])===26 || Number(previousMove)===16 && Number(nextMoveK[key])===33 || Number(previousMove)===17 && Number(nextMoveK[key])===7 || Number(previousMove)===17 && Number(nextMoveK[key])===23 || Number(previousMove)===17 && Number(nextMoveK[key])===32 || Number(previousMove)===18 && Number(nextMoveK[key])===8 || Number(previousMove)===23 && Number(nextMoveK[key])===17 || Number(previousMove)===23 && Number(nextMoveK[key])===33 || Number(previousMove)===24 && Number(nextMoveK[key])===9 || Number(previousMove)===24 && Number(nextMoveK[key])===18 || Number(previousMove)===24 && Number(nextMoveK[key])===34 || Number(previousMove)===24 && Number(nextMoveK[key])===41 || Number(previousMove)===25 && Number(nextMoveK[key])===8 || Number(previousMove)===25 && Number(nextMoveK[key])===15 || Number(previousMove)===25 && Number(nextMoveK[key])===31 || Number(previousMove)===25 && Number(nextMoveK[key])===40 || Number(previousMove)===26 && Number(nextMoveK[key])===16 || Number(previousMove)===26 && Number(nextMoveK[key])===32 || Number(previousMove)===31 && Number(nextMoveK[key])===25 || Number(previousMove)===31 && Number(nextMoveK[key])===41 || Number(previousMove)===32 && Number(nextMoveK[key])===17 || Number(previousMove)===32 && Number(nextMoveK[key])===26 || Number(previousMove)===32 && Number(nextMoveK[key])===42 || Number(previousMove)===32 && Number(nextMoveK[key])===49){
+      continue
+    }
+    if(nextMoveK[key]>0){
+      if(Number(previousMove)===33 && Number(nextMoveK[key])===16 || Number(previousMove)===33 && Number(nextMoveK[key])===23  ||  Number(previousMove)===33 && Number(nextMoveK[key])===39 || Number(previousMove)===33 && Number(nextMoveK[key])===48 || Number(previousMove)===34 && Number(nextMoveK[key])===24 || Number(previousMove)===34 && Number(nextMoveK[key])===40 || Number(previousMove)===39 && Number(nextMoveK[key])===33 || Number(previousMove)===39 && Number(nextMoveK[key])===49 || Number(previousMove)===40 && Number(nextMoveK[key])===25 || Number(previousMove)===40 && Number(nextMoveK[key])===34 || Number(previousMove)===40 && Number(nextMoveK[key])===50 || Number(previousMove)===40 && Number(nextMoveK[key])===57 || Number(previousMove)===41 && Number(nextMoveK[key])===24 || Number(previousMove)===41 && Number(nextMoveK[key])===31){
+        continue}
+  }
+  if(Number(previousMove)===41 && Number(nextMoveK[key])===47 || Number(previousMove)===41 && Number(nextMoveK[key])===56 || Number(previousMove)===42 && Number(nextMoveK[key])===32 || Number(previousMove)===42 && Number(nextMoveK[key])===48 || Number(previousMove)===47 && Number(nextMoveK[key])===41 || Number(previousMove)===47 && Number(nextMoveK[key])===57 || Number(previousMove)===48 && Number(nextMoveK[key])===33 || Number(previousMove)===48 && Number(nextMoveK[key])===42 || Number(previousMove)===48 && Number(nextMoveK[key])===58 || Number(previousMove)===49 && Number(nextMoveK[key])===32 || Number(previousMove)===49 && Number(nextMoveK[key])===39 || Number(previousMove)===49 && Number(nextMoveK[key])===55 || Number(previousMove)===49 && Number(nextMoveK[key])===64 || Number(previousMove)===50 && Number(nextMoveK[key])===40 || Number(previousMove)===50 && Number(nextMoveK[key])===56 || Number(previousMove)===55 && Number(nextMoveK[key])===49 || Number(previousMove)===56 && Number(nextMoveK[key])===41 || Number(previousMove)===56 && Number(nextMoveK[key])===50 || Number(previousMove)===57 && Number(nextMoveK[key])===40 || Number(previousMove)===57 && Number(nextMoveK[key])===47 || Number(previousMove)===57 && Number(nextMoveK[key])===63 || Number(previousMove)===58 && Number(nextMoveK[key])===48 || Number(previousMove)===58 && Number(nextMoveK[key])===64 || Number(previousMove)===63 && Number(nextMoveK[key])===57 || Number(previousMove)===64 && Number(nextMoveK[key])===49 || Number(previousMove)===64 && Number(nextMoveK[key])===58){
+    continue
+  }
+  
+  if(document.querySelector(`.js-cell-${nextMoveK[key]}`).innerHTML !=''){
+    continue
+  }
+if(document.querySelector(`.js-cell-${nextMoveK[key]}`).contains(document.querySelector('.king-b'))){
+  check = true
+  console.log(check)
+}
+}
+}  
+}
